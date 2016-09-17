@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "amd",
+		"sourceMap": true,
+		"noImplicitAny": true
+	},
+	"exclude": [
+		"node_modules"
+	]
+}
