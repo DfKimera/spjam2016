@@ -1,0 +1,1 @@
+{"version":3,"file":"GameState.js","sourceRoot":"","sources":["GameState.ts"],"names":["GameState","GameState.constructor","GameState.construct","GameState.create"],"mappings":";;;;;;IAEA;QAA+BA,6BAASA;QAAxCA;YAA+BC,8BAASA;QASxCA,CAACA;QAPAD,6BAASA,GAATA;QACAE,CAACA;QAEDF,0BAAMA,GAANA;QAEAG,CAACA;QAEFH,gBAACA;IAADA,CAACA,AATD,EAA+B,qBAAS,EASvC;IATY,iBAAS,YASrB,CAAA"}
