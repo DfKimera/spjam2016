@@ -23,7 +23,7 @@ package {
 
 		public override function create():void {
 
-			Game.playMusic("radio_martini");
+			//Game.playMusic("radio_martini");
 
 			background = new FlxSprite(0,0);
 			background.loadGraphic(BACKGROUND_SPRITE);

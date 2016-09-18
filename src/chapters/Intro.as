@@ -6,36 +6,35 @@ package chapters {
 	import engine.visualnovel.Chapter;
 	import engine.visualnovel.Event;
 
+	import levels.TrainStation;
+
 	public class Intro extends Chapter {
 
-		public function Intro() {
+		public function Intro():void {
+			chain.addEvent(Event.newBackground(chain, Assets.BG_CEMETERY).loadNext());
 
-			var self:Chapter = this;
-
-			addEvent(Event.newBackground(this, Assets.BG_CEMETERY).loadNext());
-			addQuestion("Você avistou monstros na praia, o que quer fazer?")
-				.addOption("Se esconder", optHide)
-				.addOption("'Ei! Quem são vocês?'", optAsk);
-
+			chain.addQuestion("Você avistou monstros na praia, o que quer fazer?")
+					.addOption("Se esconder", optHide)
+					.addOption("'Ei! Quem são vocês?'", optAsk);
 		}
 
 		private function optAsk():void {
-			addEvent(Event.newDialog(this, Cthullu, "QUEM ESTÁ AÍ!?"));
-			nextEvent();
+			chain.addEvent(Event.newDialog(chain, Cthullu, "QUEM ESTÁ AÍ!?"));
+			chain.start();
 		}
 
 		private function optHide():void {
-			addEvent(Event.newDialog(this, Cthullu, "QUEM ESTÁ AÍ!?"));
-			addEvent(Event.newDialog(this, Player, "Eu acabei de chegar nesta cidade, não me machuquem, por favor!"));
-			addEvent(Event.newDialog(this, Cthullu, "Calma! Nós não queremos ferir ninguém."));
-			addEvent(Event.newDialog(this, Cthullu, "Se não ficarem em nosso caminho!"));
-			addEvent(Event.newDialog(this, Player, "... o que está acontecendo?"));
-			addEvent(Event.newDialog(this, Cthullu, "Há milhares de anos fomos exilados para terras além-mar, mas agora finalmente reunimos forças para retornar a onde pertencemos. Só queremos atravessar até além das montanhas, onde é nosso lar."));
-			nextEvent();
+			chain.addDialog(Cthullu, "QUEM ESTÁ AÍ!?")
+				.addDialog(Player, "Eu acabei de chegar nesta cidade, não me machuquem, por favor!")
+				.addDialog(Cthullu, "Calma! Nós não queremos ferir ninguém.")
+				.addDialog(Cthullu, "Se não ficarem em nosso caminho!")
+				.addDialog(Player, "... o que está acontecendo?")
+				.addDialog(Cthullu, "Há milhares de anos fomos exilados para terras além-mar, mas agora finalmente reunimos forças para retornar a onde pertencemos. Só queremos atravessar até além das montanhas, onde é nosso lar.")
+				.nextEvent();
 		}
 
 		override public function onFinish():void {
-			Game.goToMainMenu();
+			Game.transitionToScene(new TrainStation());
 		}
 
 	}

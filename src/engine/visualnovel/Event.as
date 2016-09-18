@@ -3,13 +3,14 @@ package engine.visualnovel {
 
 	public class Event {
 
-		public var chapter:Chapter = null;
+		public var eventChain:EventChain = null;
 		public var newBackground:Class = null;
 		public var newBGM:String = null;
 		public var newDialog:Dialog = null;
 		public var newQuestion:Question = null;
 
 		public var doLoadNext:Boolean = false;
+		public var deactivateChain:Boolean = false;
 
 		public function background(background:Class):Event {
 			this.newBackground = background;
@@ -22,7 +23,7 @@ package engine.visualnovel {
 		}
 
 		public function dialog(charClass:Class, message:String, expression:String = "default", position:String = "bottom"):Event {
-			this.newDialog = new Dialog(chapter, new charClass, message, expression, position);
+			this.newDialog = new Dialog(eventChain.scene, new charClass, message, expression, position);
 			return this;
 		}
 
@@ -33,13 +34,13 @@ package engine.visualnovel {
 
 		public function finish():void {
 			if(this.newQuestion) {
-				this.chapter.remove(this.newQuestion);
+				this.eventChain.scene.remove(this.newQuestion);
 				this.newQuestion.kill();
 			}
 		}
 
-		public function setChapter(chapter:Chapter):Event {
-			this.chapter = chapter;
+		public function setEventChain(chain:EventChain):Event {
+			this.eventChain = chain;
 			return this;
 		}
 
@@ -48,16 +49,25 @@ package engine.visualnovel {
 			return this;
 		}
 
-		public static function newBackground(chapter:Chapter, background:Class):Event {
-			return (new Event()).setChapter(chapter).background(background);
+		public function setDeactivateChain(deactivate:Boolean = true):Event {
+			this.deactivateChain = deactivate;
+			return this;
 		}
 
-		public static function newBGM(chapter:Chapter, bgm:String):Event {
-			return (new Event()).setChapter(chapter).bgm(bgm);
+		public static function newBackground(chain:EventChain, background:Class):Event {
+			return (new Event()).setEventChain(chain).background(background);
 		}
 
-		public static function newDialog(chapter:Chapter, charClass:Class, message:String, expression:String = "default", position:String = "bottom"):Event {
-			return (new Event()).setChapter(chapter).dialog(charClass, message, expression, position);
+		public static function newBGM(chain:EventChain, bgm:String):Event {
+			return (new Event()).setEventChain(chain).bgm(bgm);
+		}
+
+		public static function newDialog(chain:EventChain, charClass:Class, message:String, expression:String = "default", position:String = "bottom"):Event {
+			return (new Event()).setEventChain(chain).dialog(charClass, message, expression, position);
+		}
+
+		public static function newBreak(chain:EventChain):Event {
+			return (new Event()).setEventChain(chain).setDeactivateChain(true);
 		}
 
 		public function toString():String {

@@ -2,13 +2,14 @@ package engine {
 
 	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
 	import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
 	public class Scene extends FlxState {
 
 		public var game:Game;
-		public var background:Background;
+		public var background:FlxSprite;
 		public var inventory:Inventory;
 
 		public var props:FlxGroup = new FlxGroup();
@@ -45,10 +46,13 @@ package engine {
 
 			this.game = Game.instance;
 
-			if(background != null) {
+			if(background == null) {
+				background = new FlxSprite(0,0);
+			} else {
 				trace("Scene has background: ",background,background.ID);
-				add(background);
 			}
+
+			add(background);
 
 			add(props);
 			add(items);

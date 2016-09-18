@@ -54,7 +54,7 @@ package engine {
 
 		public var onCloseCallback:Function = null;
 
-		public function Dialog(scene:Scene, character:Character, message:String, expression:String = "default", position:String = "top") {
+		public function Dialog(scene:Scene, character:Character, message:String, expression:String = "default", position:String = "bottom") {
 
 			trace("Dialog: ", scene, character, message, expression);
 
@@ -71,9 +71,11 @@ package engine {
 
 			var sprite:Class = (this.position == "bottom") ? BACKGROUND_BOTTOM : BACKGROUND_TOP;
 
-			portrait = character.getPortrait(expression);
-			//resetPortraitPosition();
-			add(portrait);
+			if(Config.ENABLE_PORTRAITS) {
+				portrait = character.getPortrait(expression);
+				resetPortraitPosition();
+				add(portrait);
+			}
 
 			background = new FlxExtendedSprite(0, 0);
 			background.loadGraphic(sprite, false, false, 800, 600);
@@ -93,6 +95,8 @@ package engine {
 		}
 
 		private function resetPortraitPosition():void {
+			if(!Config.ENABLE_PORTRAITS) return;
+
 			portrait.x = FlxG.stage.width - portrait.width - portraitOffset[0];
 			portrait.y = portraitOffset[1] + offsetY;
 			portrait.y -= portrait.height;
@@ -118,7 +122,6 @@ package engine {
 		}
 
 		public function skipDialog(spr:FlxExtendedSprite = null, x:int = 0, y:int = 0):void {
-
 
 			if(!isCompleted) {
 				this.completeMessage();
@@ -176,7 +179,10 @@ package engine {
 		}
 
 		private function show():void {
-			resetPortraitPosition();
+			if(Config.ENABLE_PORTRAITS) {
+				resetPortraitPosition();
+			}
+
 			scene.dialog.add(this);
 			isActive = true;
 			fxTimer.start(Config.DIALOG_CHARACTER_DELAY, 0, this.displayMoreCharacters);
@@ -196,7 +202,7 @@ package engine {
 		 * @param position String The box position ("top" or "bottom")
 		 * @return Dialog
 		 */
-		public static function show(scene:Scene, character:Character, message:String, expression:String = "default", position:String = "top"):Dialog {
+		public static function show(scene:Scene, character:Character, message:String, expression:String = "default", position:String = "bottom"):Dialog {
 			var dialog:Dialog = new Dialog(scene,  character, message, expression, position);
 
 			if(openDialog != null) {
