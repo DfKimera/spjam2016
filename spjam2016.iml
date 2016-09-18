@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="spjam2016">
     <configurations>
-      <configuration name="spjam2016" pure-as="true" main-class="Bootstrap" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/spham2016" wrapper-template-path="$MODULE_DIR$/html-template">
+      <configuration name="spjam2016" pure-as="true" main-class="Bootstrap" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/spjam2016" wrapper-template-path="$MODULE_DIR$/html-template">
         <dependencies target-player="15.0">
           <entries>
             <entry library-name="Greensock TweenLite" library-level="project">
@@ -20,8 +20,8 @@
         <packaging-android />
         <packaging-ios />
       </configuration>
-      <configuration name="production_executable" target-platform="Desktop" pure-as="true" main-class="Bootstrap" output-file="production_executable.swf" output-folder="$MODULE_DIR$/out/production/spjam2016">
-        <dependencies>
+      <configuration name="production_executable" pure-as="true" main-class="Bootstrap" output-file="production_executable.swf" output-folder="$MODULE_DIR$/out/production/release" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/html-template">
+        <dependencies target-player="15.0">
           <entries>
             <entry library-name="Greensock TweenLite" library-level="project">
               <dependency linkage="Merged" />
@@ -34,7 +34,7 @@
             <entry key="compiler.debug.swf" value="false" />
           </map>
         </compiler-options>
-        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Bootstrap-app.xml" package-file-name="Hamamachi" />
+        <packaging-air-desktop />
         <packaging-android />
         <packaging-ios />
       </configuration>
