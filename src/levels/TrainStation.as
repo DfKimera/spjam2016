@@ -1,72 +1,71 @@
 package levels {
-	import characters.Cthullu;
-	import characters.Player;
 
-	import engine.Dialog;
+	import characters.Clovis;
 
-	import engine.Inventory;
-	import engine.Item;
+	import engine.InteractiveArea;
 	import engine.Level;
-	import engine.Prop;
+	import engine.Portal;
 	import engine.visualnovel.EventChain;
-
-	import items.Knife;
-
-	import props.Boulder;
 
 	public class TrainStation extends Level {
 
-		[Embed(source="../../assets/backgrounds/subway.png")]
-		public var BACKGROUND_SPRITE:Class;
-
-		public var checkBoulderDialog:EventChain;
+		public var BACKGROUND_SPRITE:Class = Assets.BG_TRAIN_STATION;
+		public static var justWokenUp:Boolean = false;
 
 		public function TrainStation():void {
 			super();
-
-			checkBoulderDialog = createEventChain('checkedBoulder')
-				.addDialog(Player, "It's just a rock...")
-				.addDialog(Cthullu, "... maybe bash your head in it, really hard?")
-				.addDialog(Player, "What is WRONG with you?")
-				.addBreak()
-				.addDialog(Player, "Seriously, man, I'm not doing anything.")
-				.addDialog(Cthullu, "You buzzkill.")
 		}
 
 		public override function prepare():void {
 			setBackground(BACKGROUND_SPRITE);
-			//Game.playMusic("griefing_gunners");
 		}
 
 		public override function create():void {
 			super.create();
 
-			Prop.placeOnScene(this, new Boulder(), 155, 325);
+			if(justWokenUp) {
+				justWokenUp = false;
 
-			if(!Inventory.hasItemOfType("items::Knife")) {
-				// TODO: helper method that only places item if not in inventory (track by unique item ID)
-				Item.placeOnScene(this, new Knife(), 300, 300);
+				showDialog(Clovis, "Mas... mas o que!?");
+				showDialog(Clovis, "Será que foi um sonho?");
+				showDialog(Clovis, "*olha o relógio* Merda! Estou atrasado para a aula!");
 			}
+
+			Portal.placeOnScene(this,"leave_station", 0, 189, 121, 197, TrainStation.exitLevel);
+			InteractiveArea.placeOnScene(this,"use_train",375,190,420,230,onTrainUse); // TODO: restrict this after first classroom interaction?
 		}
 
-		public override function onPropInteract(prop:Prop):void {
+		public function onTrainUse(area:InteractiveArea):void {
 
-			// TODO: fix messy API signature that requires instance instead of class
+			var chain:EventChain = EventChain.create(this);
 
-			if(prop is Boulder) {
-				checkBoulderDialog.start();
+			if(!TrainStation.trainEnabled) {
+				if(StoryLog.timeOfDay == "day") return chain.addDialog(Clovis, "Preciso encontrar o mestre. Não há mais volta para mim.").start();
+				return chain.addDialog(Clovis, "Não posso voltar, estou atrasado para minha aula").start();
 			}
+
+			chain.addQuestion("Para onde devo ir?")
+				.addOption("Campus da PUC", Level.Teleporter(PUCGate))
+				.addOption("Centro Cultural São Paulo", Level.Teleporter(Library))
+				.addOption("Cemitério da Consolação", Level.Teleporter(CemeteryStreet))
+				.addOption("Parque Augusta", Level.Teleporter(Park))
+				.addOption("Vão do MASP", Level.Teleporter(MASP))
+				.addOption("Beco do Batman", Level.Teleporter(Alley))
+				.addOption("Praça da Sé", Level.Teleporter(Plaza));
+
+			chain.start();
+
 		}
 
-		public override function onItemPick(item:Item):void {
-			if(item is Knife) {
-				createEventChain('pickedKnife')
-					.addDialog(Player, "Oh look, a knife!")
-					.addDialog(Cthullu, "Yep. Now kill yourself with it. Please?")
-					.addDialog(Player, "Uuuhm, nope.")
-					.addDialog(Cthullu, "Aww!")
-					.start();
-			}
+		private static var exitLevel:Class = CemeteryStreet;
+		private static var trainEnabled:Boolean = false;
+
+		public static function enableTrains():void {
+			trainEnabled = true;
+		}
+
+		public static function setExit(level:Class):void {
+			TrainStation.exitLevel = level;
 		}
 	}
 }

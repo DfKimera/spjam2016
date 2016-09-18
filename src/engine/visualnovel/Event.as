@@ -8,6 +8,7 @@ package engine.visualnovel {
 		public var newBGM:String = null;
 		public var newDialog:Dialog = null;
 		public var newQuestion:Question = null;
+		public var callback:Function = null;
 
 		public var doLoadNext:Boolean = false;
 		public var deactivateChain:Boolean = false;
@@ -54,6 +55,11 @@ package engine.visualnovel {
 			return this;
 		}
 
+		public function setCallback(callback:Function):Event {
+			this.callback = callback;
+			return this;
+		}
+
 		public static function newBackground(chain:EventChain, background:Class):Event {
 			return (new Event()).setEventChain(chain).background(background);
 		}
@@ -68,6 +74,10 @@ package engine.visualnovel {
 
 		public static function newBreak(chain:EventChain):Event {
 			return (new Event()).setEventChain(chain).setDeactivateChain(true);
+		}
+
+		public static function newCallback(chain:EventChain, callback:Function):Event {
+			return (new Event()).setEventChain(chain).setCallback(callback);
 		}
 
 		public function toString():String {

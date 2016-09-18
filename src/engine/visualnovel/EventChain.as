@@ -55,6 +55,16 @@ package engine.visualnovel {
 			return this;
 		}
 
+		public function addBackground(background:Class):EventChain {
+			this.addEvent(Event.newBackground(this, background));
+			return this;
+		}
+
+		public function addCallback(callback:Function, deactivateChain:Boolean = false):EventChain {
+			this.addEvent(Event.newCallback(this, callback).setDeactivateChain(deactivateChain));
+			return this;
+		}
+
 		public function nextEvent():void {
 			if(!isActive) return;
 
@@ -85,6 +95,8 @@ package engine.visualnovel {
 				trace("[deactivating chain] ", this);
 				isActive = false;
 			}
+
+			if(event.callback != null) { event.callback.call(); }
 
 			if(event.doLoadNext) {
 				trace("[event has load next]");

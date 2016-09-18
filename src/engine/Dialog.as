@@ -270,6 +270,12 @@ package engine {
 			trace("Dialog: cleared all dialog boxes from queue");
 		}
 
+		public static function Quick(scene:Scene, characterClass:Class, message:String, expression:String = "default", position:String = "bottom"):Function {
+			return function():void {
+				Dialog.show(scene, new characterClass, message, expression, position);
+			}
+		}
+
 
 	}
 }
