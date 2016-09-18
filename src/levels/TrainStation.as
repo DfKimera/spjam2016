@@ -51,7 +51,8 @@ package levels {
 				.addOption("Parque Augusta", Level.Teleporter(Park))
 				.addOption("Vão do MASP", Level.Teleporter(MASP))
 				.addOption("Beco do Batman", Level.Teleporter(Alley))
-				.addOption("Praça da Sé", Level.Teleporter(Plaza));
+				.addOption("Praça da Sé", Level.Teleporter(Plaza))
+				.addOption("Viaduto do Chá", Level.Teleporter(Bridge));
 
 			chain.start();
 

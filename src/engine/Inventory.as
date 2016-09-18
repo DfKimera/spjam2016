@@ -8,13 +8,13 @@ package engine {
 
 	public class Inventory extends FlxGroup {
 
-		[Embed(source="../../assets/inventory_grid_vertical.png")]
+		[Embed(source="../../assets/inventory_grid_vertical_v2.png")]
 		public static var BACKGROUND:Class;
 
 		[Embed(source="../../assets/inventory_icon.png")]
 		public static var BUTTON:Class;
 
-		[Embed(source="../../assets/inventory_icon_open.png")]
+		[Embed(source="../../assets/inventory_icon.png")]
 		public static var BUTTON_OPEN:Class;
 
 		public var button:FlxExtendedSprite;
@@ -25,10 +25,10 @@ package engine {
 
 		public var isOpen:Boolean = false;
 
-		public var position:Array = [FlxG.width - 230, FlxG.height - 565];
+		public var position:Array = [FlxG.width - 213, FlxG.height - 600];
 
-		public var itemPositionOffset:Array = [636,87]; //[285,437];
-		public var itemMargin:int = 9;
+		public var itemPositionOffset:Array = [644,69]; //[285,437];
+		public var itemMargin:int = 11;
 		public var currentItem:int = 0;
 		public var maxItemsPerRow:int = 1;
 

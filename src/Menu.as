@@ -11,7 +11,7 @@ package {
 
 		private var buttonOffset:Array = [115, 370];
 
-		[Embed(source="../assets/menu_background.png")]
+		[Embed(source="../assets/backgrounds/title_screen.png")]
 		public var BACKGROUND_SPRITE:Class;
 
 		public var background:FlxSprite;

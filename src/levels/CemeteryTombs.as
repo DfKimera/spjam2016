@@ -3,14 +3,19 @@ package levels {
 
 	import engine.Dialog;
 	import engine.InteractiveArea;
+	import engine.Inventory;
+	import engine.Item;
 
 	import engine.Level;
 	import engine.Portal;
 	import engine.visualnovel.EventChain;
 
+	import items.Hammer;
+
 	public class CemeteryTombs extends Level {
 
-		public var BACKGROUND_SPRITE:Class = Assets.BG_CEMETERY_TOMBS;
+		public var BACKGROUND_SPRITE_NIGHT:Class = Assets.BG_CEMETERY_TOMBS;
+		public var BACKGROUND_SPRITE_DAY:Class = Assets.BG_CEMETERY_TOMBS_DAY;
 
 		public static var isFirstTime:Boolean = true;
 		public var tombsDialogChain:EventChain;
@@ -29,7 +34,7 @@ package levels {
 		}
 
 		public override function prepare():void {
-			setBackground(BACKGROUND_SPRITE);
+			setBackground((StoryLog.timeOfDay == "day") ? BACKGROUND_SPRITE_DAY : BACKGROUND_SPRITE_NIGHT);
 		}
 
 		public override function create():void {
@@ -43,6 +48,10 @@ package levels {
 
 			Portal.placeOnScene(this, "zoom_in_tomb", 473, 92, 75, 149, CemeteryTotem);
 			Portal.placeOnScene(this, "back_to_gate", 0, 500, 800, 100, CemeteryGate);
+
+			if(!Inventory.hasItemOfType("items::Hammer")) {
+				Item.placeOnScene(this, new Hammer, 717, 296);
+			}
 
 			InteractiveArea.placeOnScene(this, "tomb_1", 115, 274, 56, 83, tombsDialog);
 			InteractiveArea.placeOnScene(this, "tomb_2", 189, 215, 47, 75, tombsDialog);

@@ -11,6 +11,7 @@ package engine {
 		public var game:Game;
 		public var background:FlxSprite;
 		public var inventory:Inventory;
+		public var book:Book;
 
 		public var props:FlxGroup = new FlxGroup();
 		public var items:FlxGroup = new FlxGroup();
@@ -68,6 +69,10 @@ package engine {
 				inventory = new Inventory(this);
 			}
 
+			if(StoryLog.hasBook) {
+				book = new Book(this);
+			}
+
 			FlxG.flash(0xff000000, this.fadeInDelay, function():void {
 				isReady = true;
 			});
@@ -93,6 +98,14 @@ package engine {
 					Inventory.show();
 				} else {
 					Inventory.hide();
+				}
+			}
+
+			if(FlxG.keys.justPressed("B")) {
+				if(!Book.isOpen()) {
+					Book.show();
+				} else {
+					Book.hide();
 				}
 			}
 

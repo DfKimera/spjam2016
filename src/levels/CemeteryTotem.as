@@ -8,8 +8,10 @@ package levels {
 
 	public class CemeteryTotem extends Level {
 
-		public var BACKGROUND_SPRITE:Class = Assets.BG_CEMETERY_TOTEM;
+		public var BACKGROUND_SPRITE_NIGHT:Class = Assets.BG_CEMETERY_TOTEM;
+		public var BACKGROUND_SPRITE_DAY:Class = Assets.BG_CEMETERY_TOTEM_DAY;
 		public var BACKGROUND_HIGHLIGHT:Class = Assets.BG_CEMETERY_TOTEM_HIGHLIGHT;
+		public var BACKGROUND_ENDING:Class = Assets.BG_CEMETERY_TOTEM_ENDING;
 
 		public static var hasSeenOnce:Boolean = false;
 
@@ -17,7 +19,7 @@ package levels {
 		}
 
 		public override function prepare():void {
-			setBackground(BACKGROUND_SPRITE);
+			setBackground((StoryLog.timeOfDay == "day") ? BACKGROUND_SPRITE_DAY : BACKGROUND_SPRITE_NIGHT);
 		}
 
 		public override function create():void {
@@ -37,7 +39,7 @@ package levels {
 			createEventChain("push_statue")
 				.addDialog(Clovis, "Apertei a mão da estátua, e um pequeno totem saiu da abertura em baixo.") // TODO: audio SFX
 				.addBackground(BACKGROUND_HIGHLIGHT)
-				.addBackground(BACKGROUND_SPRITE)
+				.addBackground(BACKGROUND_SPRITE_NIGHT)
 				.addDialog(Hastur, "VOCÊ VEIO ATÉ MIM")
 				.addDialog(Hastur, "SUA MALDADE FOI ATRAÍDA ATÉ MINHA PRESENÇA")
 				.addDialog(Clovis, "Poderoso Hastur, diga-me o que é necessário para torná-lo livre!")

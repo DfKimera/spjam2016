@@ -1,9 +1,12 @@
 package levels {
 
+	import engine.Inventory;
 	import engine.Item;
 	import engine.Level;
 	import engine.Portal;
 	import engine.Prop;
+
+	import items.Crowbar;
 
 	public class PUCGate extends Level {
 
@@ -19,8 +22,13 @@ package levels {
 
 		public override function create():void {
 			super.create();
+
 			Portal.placeOnScene(this, "enter_puc", 500, 140, 170, 380, PUCClassRoom);
 			Portal.placeOnScene(this, "leave_station", 0, 320, 75, 280, TrainStation);
+
+			if(!Inventory.hasItemOfType("items::Crowbar")) {
+				Item.placeOnScene(this, new Crowbar(), 146, 371);
+			}
 		}
 	}
 }

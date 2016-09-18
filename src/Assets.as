@@ -16,8 +16,11 @@ package {
 		[Embed(source="../assets/backgrounds/cemetery_gate.png")] public static var BG_CEMETERY_GATE:Class;
 		[Embed(source="../assets/backgrounds/cemetery_gate_day.png")] public static var BG_CEMETERY_GATE_DAY:Class;
 		[Embed(source="../assets/backgrounds/cemetery_tombs.png")] public static var BG_CEMETERY_TOMBS:Class;
+		[Embed(source="../assets/backgrounds/cemetery_tombs_day.png")] public static var BG_CEMETERY_TOMBS_DAY:Class;
 		[Embed(source="../assets/backgrounds/cemetery_totem.png")] public static var BG_CEMETERY_TOTEM:Class;
+		[Embed(source="../assets/backgrounds/cemetery_totem_day.png")] public static var BG_CEMETERY_TOTEM_DAY:Class;
 		[Embed(source="../assets/backgrounds/cemetery_totem_highlight.png")] public static var BG_CEMETERY_TOTEM_HIGHLIGHT:Class;
+		[Embed(source="../assets/backgrounds/cemetery_totem_ending.png")] public static var BG_CEMETERY_TOTEM_ENDING:Class;
 		[Embed(source="../assets/backgrounds/train_station.png")] public static var BG_TRAIN_STATION:Class;
 		[Embed(source="../assets/backgrounds/alley.png")] public static var BG_ALLEY:Class;
 		[Embed(source="../assets/backgrounds/bridge.png")] public static var BG_BRIDGE:Class;

@@ -3,7 +3,18 @@ package engine {
 
 	public class Level extends Scene {
 
+		public static var current:Level = null;
+
 		public var eventChains:Object = {};
+
+		public override function create():void {
+			super.create();
+			Level.current = this;
+		}
+
+		public static function getCurrent():Level {
+			return current;
+		}
 
 		public function showDialog(characterClass:Class, message:String, expression:String = "default", position:String = "bottom"):void {
 			Dialog.show(this, new characterClass, message, expression, position);
