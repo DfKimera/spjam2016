@@ -25,9 +25,9 @@ package engine {
 
 		public var isOpen:Boolean = false;
 
-		public var position:Array = [FlxG.width - 213, FlxG.height - 600];
+		public var position:Array = [FlxG.width - 313, FlxG.height - 600];
 
-		public var itemPositionOffset:Array = [644,69]; //[285,437];
+		public var itemPositionOffset:Array = [544,69]; //[285,437];
 		public var itemMargin:int = 11;
 		public var currentItem:int = 0;
 		public var maxItemsPerRow:int = 1;

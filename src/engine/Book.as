@@ -58,6 +58,7 @@ package engine {
 
 		private function show():void {
 			trace("Opening book: ", this,  this.scene);
+			this.scene.invLayer.add(this);
 			this.isOpen = true;
 			button.loadGraphic(BUTTON_OPEN);
 		}
@@ -65,6 +66,7 @@ package engine {
 		private function hide():void {
 			trace("Hiding book: ", this,  this.scene);
 			this.isOpen = false;
+			this.scene.invLayer.remove(this);
 			button.loadGraphic(BUTTON);
 		}
 

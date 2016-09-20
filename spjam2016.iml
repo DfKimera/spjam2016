@@ -41,7 +41,7 @@
     </configurations>
     <compiler-options />
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
@@ -54,7 +54,6 @@
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/greensock.swc!/" />
         </CLASSES>
-        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
@@ -63,7 +62,6 @@
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/greensock.swc!/" />
         </CLASSES>
-        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
