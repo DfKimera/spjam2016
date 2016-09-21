@@ -2,6 +2,8 @@ package levels {
 
 	import characters.Clovis;
 
+	import engine.Book;
+
 	import engine.InteractiveArea;
 
 	import engine.Inventory;
@@ -52,7 +54,7 @@ package levels {
 		}
 
 		public override function onBackgroundClick(x:int, y:int):void {
-			if(StoryLog.hasBook) {
+			if(StoryLog.hasBook && !isDigged) {
 				showDialog(Clovis, "Olha o tamanho desse lugar! Eu vou ficar horas procurando pelo símbolo!");
 				return;
 			}
@@ -61,26 +63,36 @@ package levels {
 		}
 
 		public function onDiggableInteract(area:InteractiveArea):void {
+			if(isDigged) return;
 			showDialog(Clovis, "O símbolo deve estar por aqui. Há uma marcação no livro, deve estar debaixo da terra.");
 		}
 
 		public override function onItemUse(prop:Prop, item:Item):void {
+			if(!StoryLog.hasBook) return;
+
 			if(prop.name == "diggable_area" && item is Shovel) {
 				Prop.placeOnScene(this, new ParkDigging(), 287, 384);
 
-				showDialog(Clovis, "*cava um buraco raso no chão do parque*");
-				showDialog(Clovis, "Mais um local público que vandalizo. Sou mesmo um cidadão exemplar.");
-				showDialog(Clovis, "*com a lente, localiza o símbolo em uma placa de pedra*");
-				showDialog(Clovis, "É isso! Sinto uma atração inexplicável por esse símbolo. Mestre, estou próximo!");
-				showDialog(Clovis, "Junto da placa, há uma chave. O que será que ela abre?");
+				createEventChain("dig_hole", giveSymbol4)
+					.addDialog(Clovis, "*cava um buraco raso no chão do parque*")
+					.addDialog(Clovis, "Mais um local público que vandalizo. Sou mesmo um cidadão exemplar.")
+					.addDialog(Clovis, "*com a lente, localiza o símbolo em uma placa de pedra*")
+					.addDialog(Clovis, "É isso! Sinto uma atração inexplicável por esse símbolo. Mestre, estou próximo!")
+					.addDialog(Clovis, "Junto da placa, há uma chave. O que será que ela abre?")
+					.start();
 
 				isDigged = true;
-
-				Inventory.addToInventory(new Key());
 				item.consume();
-
-				// TODO: give symbol
 			}
+		}
+
+		public function giveSymbol4():void {
+			Inventory.addToInventory(new Key());
+
+			StoryLog.hasSymbol4 = true;
+			StoryLog.checkIfAllSymbols(this);
+
+			Book.open();
 		}
 	}
 }

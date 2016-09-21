@@ -6,6 +6,7 @@ package levels {
 	import engine.Level;
 	import engine.Portal;
 	import engine.visualnovel.EventChain;
+	import engine.visualnovel.Question;
 
 	public class TrainStation extends Level {
 
@@ -26,6 +27,8 @@ package levels {
 			if(justWokenUp) {
 				justWokenUp = false;
 
+				Game.playMusic("memories_of_yellow");
+
 				showDialog(Clovis, "Mas... mas o que!?");
 				showDialog(Clovis, "Será que foi um sonho?");
 				showDialog(Clovis, "*olha o relógio* Merda! Estou atrasado para a aula!");
@@ -44,15 +47,17 @@ package levels {
 				return chain.addDialog(Clovis, "Não posso voltar, estou atrasado para minha aula").start();
 			}
 
-			chain.addQuestion("Para onde devo ir?")
+			var menu:Question = chain.addQuestion("Para onde devo ir?")
 				.addOption("Campus da PUC", Level.Teleporter(PUCGate))
-				.addOption("Centro Cultural São Paulo", Level.Teleporter(Library))
-				.addOption("Cemitério da Consolação", Level.Teleporter(CemeteryStreet))
+				.addOption("Centro Cultural São Paulo", Level.Teleporter(Library));
+
+			menu.addOption("Cemitério da Consolação", Level.Teleporter(CemeteryStreet))
 				.addOption("Parque Augusta", Level.Teleporter(Park))
 				.addOption("Vão do MASP", Level.Teleporter(MASP))
 				.addOption("Beco do Batman", Level.Teleporter(Alley))
 				.addOption("Praça da Sé", Level.Teleporter(Plaza))
 				.addOption("Viaduto do Chá", Level.Teleporter(Bridge));
+
 
 			chain.start();
 

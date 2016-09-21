@@ -5,7 +5,9 @@ package {
 		public function Preloader() {
 			className = "Bootstrap";
 			minDisplayTime = 1;
+
 			super();
+
 		}
 	}
 }

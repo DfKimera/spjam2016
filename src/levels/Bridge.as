@@ -2,6 +2,8 @@ package levels {
 
 	import characters.Clovis;
 
+	import engine.Book;
+
 	import engine.InteractiveArea;
 	import engine.Item;
 	import engine.Level;
@@ -43,18 +45,26 @@ package levels {
 		}
 
 		public override function onItemUse(prop:Prop, item:Item):void {
+			if(!StoryLog.hasBook) return;
 
 			if(item is Hammer) {
-				showDialog(Clovis,"Tenho que tentar não fazer muito barulho...");
-				showDialog(Clovis,"*bate na parede com o martelo* *CRACK!*");
-				showDialog(Clovis,"É isso! Encontrei um dos símbolos!");
 
-				// TODO: register symbol
+				createEventChain("get_symbol", giveSymbol3)
+					.addDialog(Clovis,"Tenho que tentar não fazer muito barulho...")
+					.addDialog(Clovis,"*bate na parede com o martelo* *CRACK!*")
+					.addDialog(Clovis,"É isso! Encontrei um dos símbolos!")
+					.start();
 
 				isCrackOpen = true;
-
 				item.consume();
 			}
+		}
+
+		public function giveSymbol3():void {
+			StoryLog.hasSymbol3 = true;
+			StoryLog.checkIfAllSymbols(this);
+
+			Book.open();
 		}
 	}
 }

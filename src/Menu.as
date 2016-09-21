@@ -23,7 +23,7 @@ package {
 
 		public override function create():void {
 
-			//Game.playMusic("radio_martini");
+			Game.playMusic("sign_of_magic");
 
 			background = new FlxSprite(0,0);
 			background.loadGraphic(BACKGROUND_SPRITE);
@@ -37,6 +37,7 @@ package {
 		public function createOptions():void {
 
 			addOption("Jogar", 0, 0, function():void {
+				StoryLog.reset();
 				Game.start();
 			});
 

@@ -69,9 +69,7 @@ package engine {
 				inventory = new Inventory(this);
 			}
 
-			if(StoryLog.hasBook) {
-				book = new Book(this);
-			}
+			book = new Book(this);
 
 			FlxG.flash(0xff000000, this.fadeInDelay, function():void {
 				isReady = true;
@@ -103,9 +101,9 @@ package engine {
 
 			if(FlxG.keys.justPressed("B")) {
 				if(!Book.isOpen()) {
-					Book.show();
+					Book.open();
 				} else {
-					Book.hide();
+					Book.close();
 				}
 			}
 

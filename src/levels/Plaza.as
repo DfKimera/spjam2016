@@ -2,6 +2,8 @@ package levels {
 
 	import characters.Clovis;
 
+	import engine.Book;
+
 	import engine.InteractiveArea;
 	import engine.Item;
 	import engine.Level;
@@ -36,15 +38,25 @@ package levels {
 		}
 
 		public override function onItemUse(prop:Prop, item:Item):void {
-			if(prop.name == "sewer" && item is Crowbar) {
-				showDialog(Clovis, "*com o pé de cabra, abre o bueiro*");
-				showDialog(Clovis, "... ah, Mestre, o que eu não faço por ti...");
-				showDialog(Clovis, "Mais um símbolo! Sinto cada vez mais a presença do Mestre!");
+			if(!StoryLog.hasBook) return;
 
-				// TODO: give symbol
+			if(prop.name == "sewer" && item is Crowbar) {
+
+				createEventChain("open_sewer", giveSymbol4)
+					.addDialog(Clovis, "*com o pé de cabra, abre o bueiro*")
+					.addDialog(Clovis, "... ah, Mestre, o que eu não faço por ti...")
+					.addDialog(Clovis, "Mais um símbolo! Sinto cada vez mais a presença do Mestre!")
+					.start();
 
 				item.consume();
 			}
+		}
+
+		public function giveSymbol4():void {
+			StoryLog.hasSymbol5 = true;
+			StoryLog.checkIfAllSymbols(this);
+
+			Book.open();
 		}
 	}
 }

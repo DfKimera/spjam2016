@@ -2,6 +2,8 @@ package levels {
 
 	import characters.Clovis;
 
+	import engine.Book;
+
 	import engine.InteractiveArea;
 	import engine.Inventory;
 	import engine.Level;
@@ -35,20 +37,26 @@ package levels {
 
 			if(area.name == "yellow_bookcase") {
 
-				showDialog(Clovis, "Encontrei! Encontrei!");
-				showDialog(Clovis, "O 'NECROMICON'!");
-				showDialog(Clovis, "Diz aqui que tenho que achar 5 símbolos, e que os 5 foram escondidos aqui em São Paulo.");
-				showDialog(Clovis, "Há alguns rabiscos e nomes, mas está tudo muito confuso. O servo que o escreveu devia estar a beira da loucura.");
-				showDialog(Clovis, "Hmm... MASP, Parque da Augusta, Beco do Batman, Viaduto do Chá, Praça da Sé...");
-				showDialog(Clovis, "O Mestre gosta de cartões postais...");
-				showDialog(Clovis, "*abre o livro* Hm, há uma lente aqui também. Através da lente, tudo fica borrado, mas o livro parece brilhar com energia.");
-
-				StoryLog.hasBook = true;
-				Inventory.addToInventory(new Lens());
-				// TODO: found book
+				createEventChain("necronomicon_get", giveLensAndBook)
+					.addDialog(Clovis, "Encontrei! Encontrei!")
+					.addDialog(Clovis, "O 'NECROMICON'!")
+					.addDialog(Clovis, "Diz aqui que tenho que achar 5 símbolos, e que os 5 foram escondidos aqui em São Paulo.")
+					.addDialog(Clovis, "Há alguns rabiscos e nomes, mas está tudo muito confuso. O servo que o escreveu devia estar a beira da loucura.")
+					.addDialog(Clovis, "Hmm... MASP, Parque da Augusta, Beco do Batman, Viaduto do Chá, Praça da Sé...")
+					.addDialog(Clovis, "O Mestre gosta de cartões postais...")
+					.addDialog(Clovis, "*abre o livro* Hm, há uma lente aqui também. Através da lente, tudo fica borrado, mas o livro parece brilhar com energia.")
+					.start();
 			}
 
-			// TODO: sequence of funny dialogs
+		}
+
+		public function giveLensAndBook():void {
+			StoryLog.hasBook = true;
+
+			Inventory.addToInventory(new Lens());
+
+			Book.showButton();
+			Book.open();
 		}
 	}
 }

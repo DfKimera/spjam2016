@@ -3,13 +3,13 @@
   <component name="FlexBuildConfigurationManager" active="spjam2016">
     <configurations>
       <configuration name="spjam2016" pure-as="true" main-class="Bootstrap" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/spjam2016" wrapper-template-path="$MODULE_DIR$/html-template">
-        <dependencies target-player="15.0">
+        <dependencies target-player="11.1">
           <entries>
             <entry library-name="Greensock TweenLite" library-level="project">
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="AIR SDK" />
+          <sdk name="4.6.0" />
         </dependencies>
         <compiler-options>
           <map>
@@ -21,17 +21,17 @@
         <packaging-ios />
       </configuration>
       <configuration name="production_executable" pure-as="true" main-class="Bootstrap" output-file="production_executable.swf" output-folder="$MODULE_DIR$/out/production/release" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/html-template">
-        <dependencies target-player="15.0">
+        <dependencies target-player="11.1">
           <entries>
             <entry library-name="Greensock TweenLite" library-level="project">
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="AIR SDK" />
+          <sdk name="4.6.0" />
         </dependencies>
         <compiler-options>
           <map>
-            <entry key="compiler.debug.swf" value="false" />
+            <entry key="compiler.debug.swf" value="true" />
           </map>
         </compiler-options>
         <packaging-air-desktop />
@@ -41,19 +41,20 @@
     </configurations>
     <compiler-options />
   </component>
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/deprecated" />
     </content>
-    <orderEntry type="jdk" jdkName="AIR SDK" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="4.6.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/greensock.swc!/" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
@@ -62,6 +63,7 @@
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/greensock.swc!/" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>

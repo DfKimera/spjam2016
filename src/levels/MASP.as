@@ -2,6 +2,8 @@ package levels {
 
 	import characters.Clovis;
 
+	import engine.Book;
+
 	import engine.InteractiveArea;
 	import engine.Item;
 	import engine.Level;
@@ -44,20 +46,31 @@ package levels {
 		}
 
 		public override function onItemUse(prop:Prop, item:Item):void {
+			if(!StoryLog.hasBook) return;
+
 			if(prop.name == "keyhole" && item is Key) {
-				showDialog(Clovis, "*coloca a chave no buraco* *click*");
-				showDialog(Clovis, "Acho que escutei um clique");
-				showDialog(Clovis, "*abre-se uma portinhola, e por trás dela há um símbolo*");
-				showDialog(Clovis, "Eureka! Mais um símbolo!");
+
+				createEventChain("open_keyhole", giveSymbol2)
+					.addDialog(Clovis, "*coloca a chave no buraco* *click*")
+					.addDialog(Clovis, "Acho que escutei um clique")
+					.addDialog(Clovis, "*abre-se uma portinhola, e por trás dela há um símbolo*")
+					.addDialog(Clovis, "Eureka! Mais um símbolo!")
+					.start();
 
 				hasUsedKey = true;
-
 				item.consume();
 
-				// TODO: give symbol
+				return;
 			}
 
 			showDialog(Clovis, "Não cabe nesse buraco. Parece que é o tamanho exato de uma chave.");
+		}
+
+		public function giveSymbol2():void {
+			StoryLog.hasSymbol2 = true;
+			StoryLog.checkIfAllSymbols(this);
+
+			Book.open();
 		}
 	}
 }

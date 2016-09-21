@@ -2,6 +2,8 @@ package levels {
 
 	import characters.Clovis;
 
+	import engine.Book;
+
 	import engine.InteractiveArea;
 	import engine.Inventory;
 	import engine.Item;
@@ -54,6 +56,8 @@ package levels {
 
 		public override function onItemUse(prop:Prop, item:Item):void {
 
+			if(!StoryLog.hasBook) return;
+
 			if(item is BrokenSpyglass) {
 				return showDialog(Clovis, "Nada de diferente... por que a luneta não tem uma lente...");
 			}
@@ -63,12 +67,16 @@ package levels {
 			}
 
 			if(prop.name == "graffitti" && item is Spyglass) {
+
 				showDialog(Clovis, "Bingo! O símbolo parece... vivo!");
 
 				item.consume();
 				hasSeenSymbol = true;
 
-				// TODO: give symbol
+				StoryLog.hasSymbol1 = true;
+				StoryLog.checkIfAllSymbols(this);
+
+				Book.open();
 			}
 		}
 	}

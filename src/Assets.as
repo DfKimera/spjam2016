@@ -1,15 +1,22 @@
 package {
 	public class Assets {
 
-		[Embed(source="../assets/bgm/bgm_cross_the_line.mp3")] public static var BGM_CROSS_THE_LINE:Class;
-		[Embed(source="../assets/bgm/bgm_inner_light.mp3")] public static var BGM_INNER_LIGHT:Class;
 		[Embed(source="../assets/bgm/bgm_mischevious_master.mp3")] public static var BGM_MISCHEVIOUS_MASTER:Class;
-		[Embed(source="../assets/bgm/bgm_paper_crisis.mp3")] public static var BGM_PAPER_CRISIS:Class;
-		[Embed(source="../assets/bgm/bgm_unlikely_hero.mp3")] public static var BGM_UNLIKELY_HERO:Class;
 		[Embed(source="../assets/bgm/bgm_griefing_gunners.mp3")] public static var BGM_GRIEFING_GUNNERS:Class;
-		[Embed(source="../assets/bgm/bgm_radio_martini.mp3")] public static var BGM_RADIO_MARTINI:Class;
+		[Embed(source="../assets/bgm/bgm_memories_of_yellow.mp3")] public static var BGM_MEMORIES_OF_YELLOW:Class;
+		[Embed(source="../assets/bgm/bgm_sign_of_magic.mp3")] public static var BGM_SIGN_OF_MAGIC:Class;
+		[Embed(source="../assets/bgm/bgm_will_my_soul.mp3")] public static var BGM_WILL_MY_SOUL:Class;
 
 		[Embed(source="../assets/choice_background.jpg")] public static var BG_CHOICE:Class;
+
+		[Embed(source="../assets/book_symbols_grid.png")] public static var BOOK_SYMBOL_GRID:Class;
+		[Embed(source="../assets/symbols/symbol_1.png")] public static var SYMBOL_1:Class;
+		[Embed(source="../assets/symbols/symbol_2.png")] public static var SYMBOL_2:Class;
+		[Embed(source="../assets/symbols/symbol_3.png")] public static var SYMBOL_3:Class;
+		[Embed(source="../assets/symbols/symbol_4.png")] public static var SYMBOL_4:Class;
+		[Embed(source="../assets/symbols/symbol_5.png")] public static var SYMBOL_5:Class;
+
+		[Embed(source="../assets/gump.png")] public static var GUMP:Class;
 
 		[Embed(source="../assets/backgrounds/cemetery_street_day.png")] public static var BG_CEMETERY_STREET_DAY:Class;
 		[Embed(source="../assets/backgrounds/cemetery_street.png")] public static var BG_CEMETERY_STREET:Class;
@@ -30,6 +37,7 @@ package {
 		[Embed(source="../assets/backgrounds/puc_classroom.png")] public static var BG_PUC_CLASSROOM:Class;
 		[Embed(source="../assets/backgrounds/puc_gate.png")] public static var BG_PUC_GATE:Class;
 		[Embed(source="../assets/backgrounds/plaza.png")] public static var BG_PLAZA:Class;
+		[Embed(source="../assets/backgrounds/cemetery_totem_ending.png")] public static var BG_OUTRO:Class;
 
 	}
 }
