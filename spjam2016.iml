@@ -20,7 +20,7 @@
         <packaging-android />
         <packaging-ios />
       </configuration>
-      <configuration name="production_executable" pure-as="true" main-class="Bootstrap" output-file="production_executable.swf" output-folder="$MODULE_DIR$/out/production/release" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/html-template">
+      <configuration name="production_executable" pure-as="true" main-class="Bootstrap" output-file="index.swf" output-folder="$MODULE_DIR$/out/production/release" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/html-template">
         <dependencies target-player="11.1">
           <entries>
             <entry library-name="Greensock TweenLite" library-level="project">
