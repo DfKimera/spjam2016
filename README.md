@@ -11,4 +11,4 @@ Graphic novel game, created in the Flixel / Whitewolf engine.
 
 ===================
 
-![Credits](https://raw.githubusercontent.com/DfKimera/spjam2016/master/assets/credits_screen.jpg)
+![Credits](https://raw.githubusercontent.com/DfKimera/spjam2016/master/assets/credits_screen.png)
