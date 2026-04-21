@@ -54,7 +54,7 @@ import org.flixel.FlxG;
 		return this;
 	}
 
-	public function addBackground(background:Class<Dynamic>):EventChain {
+	public function addBackground(background:String):EventChain {
 		this.addEvent(Event.newBackground(this, background));
 		return this;
 	}
@@ -115,7 +115,7 @@ import org.flixel.FlxG;
 		}
 	}
 
-	public function displayBackground(newBackground:Class<Dynamic>) {
+	public function displayBackground(newBackground:String) {
 		transitioning = true;
 
 		Utils.fadeOut(scene.background, Config.SCENE_FADE_DELAY, function () {

@@ -9,8 +9,7 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
  class MenuOption extends FlxGroup {
 
-	@:meta(Embed(source="../assets/choice_btn.png"))
-	var SPRITE:Class<Dynamic>;
+	var SPRITE:String = "assets/choice_btn.png";
 
 	var onTriggerHandler:ASFunction;
 	var isOver:Bool = false;

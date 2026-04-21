@@ -188,7 +188,7 @@ import org.flixel.system.FlxTilemapBuffer;
 	 *
 	 * @return	A pointer this instance of FlxTilemap, for chaining as usual :)
 	 */
-	public function loadMap(MapData:String, TileGraphic:Class<Dynamic>, TileWidth:UInt = 0, TileHeight:UInt = 0, AutoTile:UInt = OFF, StartingIndex:UInt = 0, DrawIndex:UInt = 1, CollideIndex:UInt = 1):FlxTilemap {
+	public function loadMap(MapData:String, TileGraphic:String, TileWidth:UInt = 0, TileHeight:UInt = 0, AutoTile:UInt = OFF, StartingIndex:UInt = 0, DrawIndex:UInt = 1, CollideIndex:UInt = 1):FlxTilemap {
 		auto = AutoTile;
 		_startingIndex = StartingIndex;
 

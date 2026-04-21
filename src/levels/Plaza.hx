@@ -14,7 +14,7 @@ import items.Crowbar;
 
  class Plaza extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_PLAZA;
+	public var BACKGROUND_SPRITE:String = Assets.BG_PLAZA;
 
 	public function new(){
 		super();

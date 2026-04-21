@@ -95,7 +95,7 @@ import flash.text.TextFormat;
 		format.font = Font;
 		format.size = Size;
 		format.color = Color;
-		//format.align = Alignment;
+		format.align = Alignment;
 		_textField.defaultTextFormat = format;
 		_textField.setTextFormat(format);
 		_shadow = ShadowColor;

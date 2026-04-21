@@ -9,10 +9,10 @@ import engine.Portal;
 
  class CemeteryTotem extends Level {
 
-	public var BACKGROUND_SPRITE_NIGHT:Class<Dynamic> = Assets.BG_CEMETERY_TOTEM;
-	public var BACKGROUND_SPRITE_DAY:Class<Dynamic> = Assets.BG_CEMETERY_TOTEM_DAY;
-	public var BACKGROUND_HIGHLIGHT:Class<Dynamic> = Assets.BG_CEMETERY_TOTEM_HIGHLIGHT;
-	public var BACKGROUND_ENDING:Class<Dynamic> = Assets.BG_CEMETERY_TOTEM_ENDING;
+	public var BACKGROUND_SPRITE_NIGHT:String = Assets.BG_CEMETERY_TOTEM;
+	public var BACKGROUND_SPRITE_DAY:String = Assets.BG_CEMETERY_TOTEM_DAY;
+	public var BACKGROUND_HIGHLIGHT:String = Assets.BG_CEMETERY_TOTEM_HIGHLIGHT;
+	public var BACKGROUND_ENDING:String = Assets.BG_CEMETERY_TOTEM_ENDING;
 
 	public static var hasSeenOnce:Bool = false;
 

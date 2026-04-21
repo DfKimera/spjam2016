@@ -8,14 +8,9 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
 class Inventory extends FlxGroup {
 
-    @:meta(Embed(source = "../../assets/inventory_grid_vertical_v2.png"))
-    public static var BACKGROUND:Class<Dynamic>;
-
-    @:meta(Embed(source = "../../assets/inventory_icon.png"))
-    public static var BUTTON:Class<Dynamic>;
-
-    @:meta(Embed(source = "../../assets/inventory_icon.png"))
-    public static var BUTTON_OPEN:Class<Dynamic>;
+    public static var BACKGROUND:String = "assets/inventory_grid_vertical_v2.png";
+    public static var BUTTON:String = "assets/inventory_icon.png";
+    public static var BUTTON_OPEN:String = "assets/inventory_icon.png";
 
     public var button:FlxExtendedSprite;
 

@@ -5,7 +5,7 @@ import engine.Dialog;
  class Event {
 
 	public var _eventChain:EventChain = null;
-	public var _newBackground:Class<Dynamic> = null;
+	public var _newBackground:String = null;
 	public var _newBGM:String = null;
 	public var _newDialog:Dialog = null;
 	public var _newQuestion:Question = null;
@@ -14,7 +14,7 @@ import engine.Dialog;
 	public var _doLoadNext:Bool = false;
 	public var _deactivateChain:Bool = false;
 
-	public function background(background:Class<Dynamic>):Event {
+	public function background(background:String):Event {
 		this._newBackground = background;
 		return this;
 	}
@@ -61,7 +61,7 @@ import engine.Dialog;
 		return this;
 	}
 
-	public static function newBackground(chain:EventChain, background:Class<Dynamic>):Event {
+	public static function newBackground(chain:EventChain, background:String):Event {
 		return new Event().setEventChain(chain).background(background);
 	}
 

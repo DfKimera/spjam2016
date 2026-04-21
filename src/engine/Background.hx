@@ -5,7 +5,7 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
 	public var scene:Scene;
 
-	public function new(bitmap:Class<Dynamic>, scene:Scene) {
+	public function new(bitmap:String, scene:Scene) {
 		super();
 		loadGraphic(bitmap, false, false, 800, 600, false);
 		this.mouseReleasedCallback = this.onClicked;

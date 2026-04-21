@@ -15,8 +15,7 @@ import org.flixel.FlxG;
  * @author Adam Atomic
  */
  class Vis extends Sprite {
-	@:meta(Embed(source="../../data/vis/bounds.png"))
-	var ImgBounds:Class<Dynamic>;
+	var ImgBounds:String = null;
 
 	var _bounds:Bitmap;
 	var _overBounds:Bool = false;
@@ -30,7 +29,7 @@ import org.flixel.FlxG;
 
 		var spacing:UInt = 7;
 
-		_bounds = ImgBounds != null ? Type.createInstance(ImgBounds, []) : new flash.display.Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_bounds = new flash.display.Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		addChild(_bounds);
 
 		unpress();

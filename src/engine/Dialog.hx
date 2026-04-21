@@ -16,11 +16,8 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 	@:meta(Embed(source="../../assets/Raleway-Regular.ttf", fontFamily="raleway", embedAsCFF="false"))
 	public static var FONT_GENERIC:Class<Dynamic>;
 
-	@:meta(Embed(source="../../assets/character_dialog_box.png"))
-	var BACKGROUND_TOP:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/character_dialog_box_bottom.png"))
-	var BACKGROUND_BOTTOM:Class<Dynamic>;
+	var BACKGROUND_TOP:String = "assets/character_dialog_box.png";
+	var BACKGROUND_BOTTOM:String = "assets/character_dialog_box_bottom.png";
 
 	public var isActive:Bool = false;
 	public var isCompleted:Bool = false;

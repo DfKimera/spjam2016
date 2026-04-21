@@ -14,7 +14,7 @@ import items.Key;
 
  class MASP extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_MASP;
+	public var BACKGROUND_SPRITE:String = Assets.BG_MASP;
 
 	public static var hasUsedKey:Bool = false;
 

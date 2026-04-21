@@ -23,12 +23,8 @@ import org.flixel.system.FlxReplay;
  * @author	Adam Atomic
  */
  class FlxGame extends Sprite {
-	@:meta(Embed(source="data/nokiafc22.ttf", fontFamily="system", embedAsCFF="false"))
-	var junk:String;
-	@:meta(Embed(source="data/beep.mp3"))
-	var SndBeep:Class<Dynamic>;
-	@:meta(Embed(source="data/logo.png"))
-	var ImgLogo:Class<Dynamic>;
+	var SndBeep:String = null;
+	var ImgLogo:String = null;
 
 	/**
 	 * Sets 0, -, and + to control the global volume sound volume.
@@ -756,7 +752,9 @@ i++;
 		gfx.endFill();
 
 		if (ImgLogo != null) {
-			var logo:Bitmap = Type.createInstance(ImgLogo, []);
+			var logoBd = openfl.Assets.getBitmapData(ImgLogo);
+			if (logoBd == null) return;
+			var logo:Bitmap = new Bitmap(logoBd);
 			logo.scaleX = Std.int(helper / 10);
 			if (logo.scaleX < 1) {
 				logo.scaleX = 1;

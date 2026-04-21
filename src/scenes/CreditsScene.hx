@@ -9,8 +9,7 @@ import org.flixel.FlxSprite;
 
  class CreditsScene extends Scene {
 
-	@:meta(Embed(source="../../assets/credits_screen.png"))
-	public var BACKGROUND_SPRITE:Class<Dynamic>;
+	public var BACKGROUND_SPRITE:String = "assets/credits_screen.png";
 
 	public var gump:FlxSprite;
 

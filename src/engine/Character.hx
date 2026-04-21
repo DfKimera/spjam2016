@@ -38,7 +38,7 @@ import org.flixel.FlxSprite;
 	 * @param graphic Class The bitmap graphic class.
 	 * @param isAnimated Boolean Is the portrait animated?
 	 */
-	public function addPortrait(expression:String, graphic:Class<Dynamic>, isAnimated:Bool = false) {
+	public function addPortrait(expression:String, graphic:String, isAnimated:Bool = false) {
 		portraits[expression] = graphic;
 		portraitSprites[expression] = new FlxSprite(0, 0);
 		portraitSprites[expression].loadGraphic(graphic, isAnimated, false);
@@ -54,7 +54,7 @@ import org.flixel.FlxSprite;
 	}
 
 	public function playSound(soundName:String):FlxSound {
-		var sound:Class<Dynamic> = (this : ASAny)["SOUND_" + soundName.toUpperCase()];
+		var sound:String = (this : ASAny)["SOUND_" + soundName.toUpperCase()];
 		trace("Voice: ", sound);
 		return FlxG.play(sound, 0.5);
 	}

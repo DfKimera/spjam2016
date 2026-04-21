@@ -9,8 +9,7 @@ import org.flixel.FlxState;
 
 	var buttonOffset:Array<ASAny> = [115, 370];
 
-	@:meta(Embed(source="../assets/backgrounds/title_screen.png"))
-	public var BACKGROUND_SPRITE:Class<Dynamic>;
+	public var BACKGROUND_SPRITE:String = "assets/backgrounds/title_screen.png";
 
 	public var background:FlxSprite;
 	public var optionIndex:Array<ASAny> = [];

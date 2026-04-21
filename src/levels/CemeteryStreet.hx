@@ -14,8 +14,8 @@ import props.CemeteryStreetTrash;
 
  class CemeteryStreet extends Level {
 
-	public var BACKGROUND_SPRITE_DAY:Class<Dynamic> = Assets.BG_CEMETERY_STREET_DAY;
-	public var BACKGROUND_SPRITE_NIGHT:Class<Dynamic> = Assets.BG_CEMETERY_STREET;
+	public var BACKGROUND_SPRITE_DAY:String = Assets.BG_CEMETERY_STREET_DAY;
+	public var BACKGROUND_SPRITE_NIGHT:String = Assets.BG_CEMETERY_STREET;
 
 	public var trash:CemeteryStreetTrash;
 

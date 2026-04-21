@@ -8,13 +8,13 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
  class Item extends FlxBasic {
 
-	var graphicIcon:Class<Dynamic>;
-	var graphicPlaced:Class<Dynamic>;
+	var graphicIcon:String;
+	var graphicPlaced:String;
 
 	var icon:FlxExtendedSprite;
 	public var placed:FlxExtendedSprite;
 
-	public function new(graphicIcon:Class<Dynamic>, graphicPlaced:Class<Dynamic>) {
+	public function new(graphicIcon:String, graphicPlaced:String) {
 		super();
 		this.graphicIcon = graphicIcon;
 		this.graphicPlaced = graphicPlaced;

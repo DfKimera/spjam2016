@@ -13,7 +13,7 @@ import items.Lens;
 
  class Library extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_LIBRARY;
+	public var BACKGROUND_SPRITE:String = Assets.BG_LIBRARY;
 
 	public function new(){
 		super();

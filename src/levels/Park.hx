@@ -20,7 +20,7 @@ import props.ParkDigging;
 
  class Park extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_PARK;
+	public var BACKGROUND_SPRITE:String = Assets.BG_PARK;
 
 	public static var isDigged:Bool = false;
 

@@ -82,8 +82,8 @@ import scenes.CreditsScene;
 		}
 		currentBGM = name;
 
-		var bgm:Class<Dynamic> = (Assets : ASAny)["BGM_" + name.toUpperCase()];
-		if (bgm == null || !Std.is(bgm , Class)) {
+		var bgm:String = (Assets : ASAny)["BGM_" + name.toUpperCase()];
+		if (bgm == null) {
 			trace("Invalid BGM! ", name, bgm);
 			return;
 		}

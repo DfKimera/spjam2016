@@ -16,17 +16,10 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
  class Book extends FlxGroup {
 
-	@:meta(Embed(source="../../assets/book_background.png"))
-	public static var BACKGROUND:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/book_icon.png"))
-	public static var BUTTON:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/book_icon.png"))
-	public static var BUTTON_OPEN:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/btn_summon_hastur.png"))
-	public static var SUMMON_BTN:Class<Dynamic>;
+	public static var BACKGROUND:String = "assets/book_background.png";
+	public static var BUTTON:String = "assets/book_icon.png";
+	public static var BUTTON_OPEN:String = "assets/book_icon.png";
+	public static var SUMMON_BTN:String = "assets/btn_summon_hastur.png";
 
 	public static var instance:Book;
 	public static var button:FlxExtendedSprite;

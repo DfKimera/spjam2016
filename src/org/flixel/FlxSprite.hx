@@ -14,8 +14,7 @@ import org.flixel.system.FlxAnim;
  * @author	Adam Atomic
  */
  class FlxSprite extends FlxObject {
-	@:meta(Embed(source="data/default.png"))
-	var ImgDefault:Class<Dynamic>;
+	var ImgDefault:String = null;
 
 	/**
 	 * WARNING: The origin of the sprite will default to its center.
@@ -160,7 +159,7 @@ import org.flixel.system.FlxAnim;
 	 * @param	Y				The initial Y position of the sprite.
 	 * @param	SimpleGraphic	The graphic you want to display (OPTIONAL - for simple stuff only, do NOT use for animated images!).
 	 */
-	public function new(X:Float = 0, Y:Float = 0, SimpleGraphic:Class<Dynamic> = null) {
+	public function new(X:Float = 0, Y:Float = 0, SimpleGraphic:String = null) {
 		super(X, Y);
 
 		health = 1;
@@ -239,7 +238,7 @@ import org.flixel.system.FlxAnim;
 	 *
 	 * @return	This FlxSprite instance (nice for chaining stuff together, if you're into that).
 	 */
-	public function loadGraphic(Graphic:Class<Dynamic>, Animated:Bool = false, Reverse:Bool = false, Width:UInt = 0, Height:UInt = 0, Unique:Bool = false):FlxSprite {
+	public function loadGraphic(Graphic:String, Animated:Bool = false, Reverse:Bool = false, Width:UInt = 0, Height:UInt = 0, Unique:Bool = false):FlxSprite {
 		_bakedRotation = 0;
 		_pixels = FlxG.addBitmap(Graphic, Reverse, Unique);
 		if (Reverse) {
@@ -281,7 +280,7 @@ import org.flixel.system.FlxAnim;
 	 *
 	 * @return	This FlxSprite instance (nice for chaining stuff together, if you're into that).
 	 */
-	public function loadRotatedGraphic(Graphic:Class<Dynamic>, Rotations:UInt = 16, Frame:Int = -1, AntiAliasing:Bool = false, AutoBuffer:Bool = false):FlxSprite {
+	public function loadRotatedGraphic(Graphic:String, Rotations:UInt = 16, Frame:Int = -1, AntiAliasing:Bool = false, AutoBuffer:Bool = false):FlxSprite {
 		//Create the brush and canvas
 		var rows:UInt = Std.int(Math.sqrt(Rotations));
 		var brush= FlxG.addBitmap(Graphic);

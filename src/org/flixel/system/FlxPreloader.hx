@@ -19,12 +19,9 @@ import org.flixel.FlxG;
  * This class handles the 8-bit style preloader.
  */
  class FlxPreloader extends MovieClip {
-	@:meta(Embed(source="../data/logo.png"))
-	var ImgLogo:Class<Dynamic>;
-	@:meta(Embed(source="../data/logo_corners.png"))
-	var ImgLogoCorners:Class<Dynamic>;
-	@:meta(Embed(source="../data/logo_light.png"))
-	var ImgLogoLight:Class<Dynamic>;
+	var ImgLogo:String = null;
+	var ImgLogoCorners:String = null;
+	var ImgLogoLight:String = null;
 
 	/**
 	 * @private

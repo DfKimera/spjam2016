@@ -14,7 +14,7 @@ import items.Hammer;
 
  class Bridge extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_BRIDGE;
+	public var BACKGROUND_SPRITE:String = Assets.BG_BRIDGE;
 
 	public static var isCrackOpen:Bool = false;
 

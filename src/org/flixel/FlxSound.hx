@@ -252,10 +252,10 @@ import flash.net.URLRequest;
 	 *
 	 * @return	This <code>FlxSound</code> instance (nice for chaining stuff together, if you're into that).
 	 */
-	public function loadEmbedded(EmbeddedSound:Class<Dynamic>, Looped:Bool = false, AutoDestroy:Bool = false):FlxSound {
+	public function loadEmbedded(EmbeddedSound:String, Looped:Bool = false, AutoDestroy:Bool = false):FlxSound {
 		stop();
 		createSound();
-		_sound = Type.createInstance(EmbeddedSound, []);
+		_sound = openfl.Assets.getSound(EmbeddedSound);
 		//NOTE: can't pull ID3 info from embedded sound currently
 		_looped = Looped;
 		updateTransform();

@@ -8,10 +8,8 @@ import flash.events.MouseEvent;
  * @author	Adam Atomic
  */
  class FlxButton extends FlxSprite {
-	@:meta(Embed(source="data/button.png"))
-	var ImgDefaultButton:Class<Dynamic>;
-	@:meta(Embed(source="data/beep.mp3"))
-	var SndBeep:Class<Dynamic>;
+	var ImgDefaultButton:String = null;
+	var SndBeep:String = null;
 
 	/**
 	 * Used with public variable <code>status</code>, means not highlighted or pressed.

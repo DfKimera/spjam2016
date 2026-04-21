@@ -20,7 +20,7 @@ import items.Spyglass;
 
  class Alley extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_ALLEY;
+	public var BACKGROUND_SPRITE:String = Assets.BG_ALLEY;
 
 	public var hasSeenSymbol:Bool = false;
 

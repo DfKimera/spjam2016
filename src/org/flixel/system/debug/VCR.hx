@@ -19,24 +19,15 @@ import org.flixel.FlxU;
  * @author Adam Atomic
  */
  class VCR extends Sprite {
-	@:meta(Embed(source="../../data/vcr/open.png"))
-	var ImgOpen:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/record_off.png"))
-	var ImgRecordOff:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/record_on.png"))
-	var ImgRecordOn:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/stop.png"))
-	var ImgStop:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/flixel.png"))
-	var ImgFlixel:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/restart.png"))
-	var ImgRestart:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/pause.png"))
-	var ImgPause:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/play.png"))
-	var ImgPlay:Class<Dynamic>;
-	@:meta(Embed(source="../../data/vcr/step.png"))
-	var ImgStep:Class<Dynamic>;
+	var ImgOpen:String = null;
+	var ImgRecordOff:String = null;
+	var ImgRecordOn:String = null;
+	var ImgStop:String = null;
+	var ImgFlixel:String = null;
+	var ImgRestart:String = null;
+	var ImgPause:String = null;
+	var ImgPlay:String = null;
+	var ImgStep:String = null;
 
 	static final FILE_TYPES:Array<FileFilter> = [new FileFilter("Flixel Game Recording", "*.fgr")];
 	static inline final DEFAULT_FILE_NAME= "replay.fgr";
@@ -85,41 +76,41 @@ import org.flixel.FlxU;
 
 		var spacing:UInt = 7;
 
-		_open = ImgOpen != null ? Type.createInstance(ImgOpen, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_open = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		addChild(_open);
 
-		_recordOff = ImgRecordOff != null ? Type.createInstance(ImgRecordOff, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_recordOff = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_recordOff.x = _open.x + _open.width + spacing;
 		addChild(_recordOff);
 
-		_recordOn = ImgRecordOn != null ? Type.createInstance(ImgRecordOn, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_recordOn = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_recordOn.x = _recordOff.x;
 		_recordOn.visible = false;
 		addChild(_recordOn);
 
-		_stop = ImgStop != null ? Type.createInstance(ImgStop, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_stop = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_stop.x = _recordOff.x;
 		_stop.visible = false;
 		addChild(_stop);
 
-		_flixel = ImgFlixel != null ? Type.createInstance(ImgFlixel, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_flixel = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_flixel.x = _recordOff.x + _recordOff.width + spacing;
 		addChild(_flixel);
 
-		_restart = ImgRestart != null ? Type.createInstance(ImgRestart, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_restart = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_restart.x = _flixel.x + _flixel.width + spacing;
 		addChild(_restart);
 
-		_pause = ImgPause != null ? Type.createInstance(ImgPause, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_pause = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_pause.x = _restart.x + _restart.width + spacing;
 		addChild(_pause);
 
-		_play = ImgPlay != null ? Type.createInstance(ImgPlay, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_play = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_play.x = _pause.x;
 		_play.visible = false;
 		addChild(_play);
 
-		_step = ImgStep != null ? Type.createInstance(ImgStep, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
+		_step = new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_step.x = _pause.x + _pause.width + spacing;
 		addChild(_step);
 

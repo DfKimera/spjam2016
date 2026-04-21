@@ -12,8 +12,7 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 	@:meta(Embed(source="../../../assets/Raleway-Regular.ttf", fontFamily="raleway", embedAsCFF="false"))
 	public static var FONT:Class<Dynamic>;
 
-	@:meta(Embed(source="../../../assets/choice_btn.png"))
-	var SPRITE:Class<Dynamic>;
+	var SPRITE:String = "assets/choice_btn.png";
 
 	var btn:FlxExtendedSprite;
 	var onTriggerHandler:ASFunction;

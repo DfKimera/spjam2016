@@ -4,20 +4,11 @@ import org.flixel.FlxG;
 
  class Cursor {
 
-	@:meta(Embed(source="../../assets/cursor_skip.png"))
-	public static var SPRITE_SKIP:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/cursor_arrow_bk.png"))
-	public static var SPRITE_ARROW:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/cursor_hand_bk.png"))
-	public static var SPRITE_HAND:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/cursor_eye_bk.png"))
-	public static var SPRITE_EYE:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/cursor_door_bk.png"))
-	public static var SPRITE_DOOR:Class<Dynamic>;
+	public static var SPRITE_SKIP:String = "assets/cursor_skip.png";
+	public static var SPRITE_ARROW:String = "assets/cursor_arrow_bk.png";
+	public static var SPRITE_HAND:String = "assets/cursor_hand_bk.png";
+	public static var SPRITE_EYE:String = "assets/cursor_eye_bk.png";
+	public static var SPRITE_DOOR:String = "assets/cursor_door_bk.png";
 
 	public static var isVisible:Bool = true;
 

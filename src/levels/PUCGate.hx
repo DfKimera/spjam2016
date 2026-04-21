@@ -9,7 +9,7 @@ import items.Crowbar;
 
  class PUCGate extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_PUC_GATE;
+	public var BACKGROUND_SPRITE:String = Assets.BG_PUC_GATE;
 
 	public function new(){
 		super();

@@ -18,8 +18,7 @@ import org.flixel.FlxU;
  * @author Adam Atomic
  */
  class FlxWindow extends Sprite {
-	@:meta(Embed(source="../data/handle.png"))
-	var ImgHandle:Class<Dynamic>;
+	var ImgHandle:String = null;
 
 	/**
 	 * Minimum allowed X and Y dimensions for this window.
@@ -131,9 +130,12 @@ import org.flixel.FlxU;
 		_title.text = Title;
 		addChild(_title);
 
-		if (_resizable) {
-			_handle = Type.createInstance(ImgHandle, []);
-			addChild(_handle);
+		if (_resizable && ImgHandle != null) {
+			var bd = openfl.Assets.getBitmapData(ImgHandle);
+			if (bd != null) {
+				_handle = new Bitmap(bd);
+				addChild(_handle);
+			}
 		}
 
 		if ((_width != 0) || (_height != 0)) {

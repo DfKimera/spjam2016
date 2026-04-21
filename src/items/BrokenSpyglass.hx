@@ -1,23 +1,15 @@
 package items ;
 
 import characters.Clovis;
-
 import engine.Inventory;
 import engine.Item;
 import engine.Level;
 
  class BrokenSpyglass extends Item {
 
-	@:meta(Embed(source="../../assets/items/broken_spyglass_inventory.png"))
-	public var ICON_SPRITE:Class<Dynamic>;
-
-	@:meta(Embed(source="../../assets/items/broken_spyglass_placed.png"))
-	public var PLACED_SPRITE:Class<Dynamic>;
-
 	public function new() {
-		super(ICON_SPRITE, PLACED_SPRITE);
+		super("assets/items/broken_spyglass_inventory.png", "assets/items/broken_spyglass_placed.png");
 	}
-
 	public override function onCombine(item:Item) {
 		if (Std.is(item , Lens)) {
 			item.consume();
@@ -29,4 +21,3 @@ import engine.Level;
 	}
 
 }
-

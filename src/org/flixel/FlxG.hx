@@ -481,7 +481,7 @@ return Framerate;
 	 * @param	Music		The sound file you want to loop in the background.
 	 * @param	Volume		How loud the sound should be, from 0 to 1.
 	 */
-	static public function playMusic(Music:Class<Dynamic>, Volume:Float = 1.0) {
+	static public function playMusic(Music:String, Volume:Float = 1.0) {
 		if (music == null) {
 			music = new FlxSound();
 		} else if (music.active) {
@@ -505,7 +505,7 @@ return Framerate;
 	 *
 	 * @return	A <code>FlxSound</code> object.
 	 */
-	static public function loadSound(EmbeddedSound:Class<Dynamic> = null, Volume:Float = 1.0, Looped:Bool = false, AutoDestroy:Bool = false, AutoPlay:Bool = false, URL:String = null):FlxSound {
+	static public function loadSound(EmbeddedSound:String = null, Volume:Float = 1.0, Looped:Bool = false, AutoDestroy:Bool = false, AutoPlay:Bool = false, URL:String = null):FlxSound {
 		if ((EmbeddedSound == null) && (URL == null)) {
 			FlxG.log("WARNING: FlxG.loadSound() requires either\nan embedded sound or a URL to work.");
 			return null;
@@ -534,7 +534,8 @@ return Framerate;
 	 *
 	 * @return	A <code>FlxSound</code> object.
 	 */
-	static public function play(EmbeddedSound:Class<Dynamic>, Volume:Float = 1.0, Looped:Bool = false, AutoDestroy:Bool = true):FlxSound {
+	static public function play(EmbeddedSound:String, Volume:Float = 1.0, Looped:Bool = false, AutoDestroy:Bool = true):FlxSound {
+		if (EmbeddedSound == null) return null;
 		return FlxG.loadSound(EmbeddedSound, Volume, Looped, AutoDestroy, true);
 	}
 
@@ -698,13 +699,13 @@ return Volume;
 	 *
 	 * @return	The <code>BitmapData</code> we just created.
 	 */
-	static public function addBitmap(Graphic:Class<Dynamic>, Reverse:Bool = false, Unique:Bool = false, Key:String = null):BitmapData {
+	static public function addBitmap(Graphic:String, Reverse:Bool = false, Unique:Bool = false, Key:String = null):BitmapData {
 		if (Graphic == null) {
 			return new BitmapData(1, 1, true, 0x00000000);
 		}
 		var needReverse= false;
 		if (Key == null) {
-			Key = ASCompat.toString(Graphic) + (Reverse ? "_REVERSE_" : "");
+			Key = Graphic + (Reverse ? "_REVERSE_" : "");
 			if (Unique && checkBitmapCache(Key)) {
 				var inc:UInt = 0;
 				var ukey:String;
@@ -717,13 +718,15 @@ return Volume;
 
 		//If there is no data for this key, generate the requested graphic
 		if (!checkBitmapCache(Key)) {
-			_cache[Key] = Type.createInstance(Graphic, []).bitmapData;
+			var bd = openfl.Assets.getBitmapData(Graphic);
+			if (bd == null) return new BitmapData(1, 1, true, 0x00000000);
+			_cache[Key] = bd;
 			if (Reverse) {
 				needReverse = true;
 			}
 		}
 		var pixels:BitmapData = _cache[Key];
-		if (!needReverse && Reverse && (pixels.width == Type.createInstance(Graphic, []).bitmapData.width)) {
+		if (!needReverse && Reverse && (pixels.width == openfl.Assets.getBitmapData(Graphic).width)) {
 			needReverse = true;
 		}
 		if (needReverse) {

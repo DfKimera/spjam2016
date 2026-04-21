@@ -150,7 +150,7 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 	 * Sets the scene's background bitmap class.
 	 * @param backgroundBitmap Class
 	 */
-	public function setBackground(backgroundBitmap:Class<Dynamic>) {
+	public function setBackground(backgroundBitmap:String) {
 		background = new Background(backgroundBitmap, this);
 	}
 

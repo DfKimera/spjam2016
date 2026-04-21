@@ -4,8 +4,7 @@ import engine.Character;
 
  class Hastur extends Character {
 
-	@:meta(Embed(source="../../assets/portrait_testcharacter.jpg"))
-	public static var PORTRAIT_DEFAULT:Class<Dynamic>;
+	public static var PORTRAIT_DEFAULT:String = "assets/portrait_testcharacter.jpg";
 
 	override public function setCharacterInfo() {
 		this.characterName = "Hastur";

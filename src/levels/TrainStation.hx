@@ -9,7 +9,7 @@ import engine.visualnovel.EventChain;
 
  class TrainStation extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_TRAIN_STATION;
+	public var BACKGROUND_SPRITE:String = Assets.BG_TRAIN_STATION;
 	public static var justWokenUp:Bool = false;
 
 	public function new(){

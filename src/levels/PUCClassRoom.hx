@@ -8,7 +8,7 @@ import levels.PUCClassRoom;
 
  class PUCClassRoom extends Level {
 
-	public var BACKGROUND_SPRITE:Class<Dynamic> = Assets.BG_PUC_CLASSROOM;
+	public var BACKGROUND_SPRITE:String = Assets.BG_PUC_CLASSROOM;
 
 	public static var hasSeenSequence:Bool = false;
 

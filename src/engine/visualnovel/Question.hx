@@ -13,8 +13,7 @@ import org.flixel.FlxText;
 	@:meta(Embed(source="../../../assets/Merriweather-Regular.ttf", fontFamily="merriweather", embedAsCFF="false"))
 	public static var FONT:Class<Dynamic>;
 
-	@:meta(Embed(source="../../../assets/question_bg.png"))
-	public var BACKGROUND_SPRITE:Class<Dynamic>;
+	public var BACKGROUND_SPRITE:String = "assets/question_bg.png";
 
 	public var background:FlxSprite;
 

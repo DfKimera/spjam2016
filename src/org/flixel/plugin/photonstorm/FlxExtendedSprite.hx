@@ -192,7 +192,7 @@ import org.flixel.plugin.photonstorm.baseTypes.MouseSpring;
 	 * @param	Y				The initial Y position of the sprite.
 	 * @param	SimpleGraphic	The graphic you want to display (OPTIONAL - for simple stuff only, do NOT use for animated images!).
 	 */
-	public function new(X:Float = 0, Y:Float = 0, SimpleGraphic:Class<Dynamic> = null) {
+	public function new(X:Float = 0, Y:Float = 0, SimpleGraphic:String = null) {
 		super(X, Y, SimpleGraphic);
 	}
 

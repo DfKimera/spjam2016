@@ -16,8 +16,7 @@ import org.flixel.system.replay.MouseRecord;
  * @author Adam Atomic
  */
  class Mouse extends FlxPoint {
-	@:meta(Embed(source="../../data/cursor.png"))
-	var ImgDefaultCursor:Class<Dynamic>;
+	var ImgDefaultCursor:String = null;
 
 	/**
 	 * Current "delta" value of mouse wheel.  If the wheel was just scrolled up, it will have a positive value.  If it was just scrolled down, it will have a negative value.  If it wasn't just scroll this frame, it will be 0.
@@ -92,7 +91,7 @@ import org.flixel.system.replay.MouseRecord;
 	 * @param	XOffset		The number of pixels between the mouse's screen position and the graphic's top left corner.
 	 * @param	YOffset		The number of pixels between the mouse's screen position and the graphic's top left corner.
 	 */
-	public function show(Graphic:Class<Dynamic> = null, Scale:Float = 1, XOffset:Int = 0, YOffset:Int = 0) {
+	public function show(Graphic:String = null, Scale:Float = 1, XOffset:Int = 0, YOffset:Int = 0) {
 		_cursorContainer.visible = true;
 		if (Graphic != null) {
 			load(Graphic, Scale, XOffset, YOffset);
@@ -124,7 +123,7 @@ function  get_visible():Bool {
 	 * @param	XOffset		The number of pixels between the mouse's screen position and the graphic's top left corner.
 	 * @param	YOffset		The number of pixels between the mouse's screen position and the graphic's top left corner.
 	 */
-	public function load(Graphic:Class<Dynamic> = null, Scale:Float = 1, XOffset:Int = 0, YOffset:Int = 0) {
+	public function load(Graphic:String = null, Scale:Float = 1, XOffset:Int = 0, YOffset:Int = 0) {
 		if (_cursor != null) {
 			_cursorContainer.removeChild(_cursor);
 		}
@@ -135,7 +134,9 @@ function  get_visible():Bool {
 		if (Graphic == null) {
 			return;
 		}
-		_cursor = Type.createInstance(Graphic, []);
+		var bd = openfl.Assets.getBitmapData(Graphic);
+		if (bd == null) return;
+		_cursor = new Bitmap(bd);
 		_cursor.x = XOffset;
 		_cursor.y = YOffset;
 		_cursor.scaleX = Scale;

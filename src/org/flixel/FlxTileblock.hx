@@ -30,7 +30,7 @@ package org.flixel ;
 	 * @param	TileHeight		The height of a single tile in the graphic.
 	 * @param	Empties			The number of "empty" tiles to add to the auto-fill algorithm (e.g. 8 tiles + 4 empties = 1/3 of block will be open holes).
 	 */
-	public function loadTiles(TileGraphic:Class<Dynamic>, TileWidth:UInt = 0, TileHeight:UInt = 0, Empties:UInt = 0):FlxTileblock {
+	public function loadTiles(TileGraphic:String, TileWidth:UInt = 0, TileHeight:UInt = 0, Empties:UInt = 0):FlxTileblock {
 		if (TileGraphic == null) {
 			return this;
 		}
