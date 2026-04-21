@@ -5,22 +5,39 @@ import Reflect;
 
 class TweenLite {
     public static function to(target:Dynamic, duration:Float, vars:Dynamic):Void {
-        // Convert seconds → milliseconds
         var ms = Std.int(duration * 1000);
+        var onUpdate:Dynamic = Reflect.field(vars, "onUpdate");
+        var onComplete:Dynamic = Reflect.field(vars, "onComplete");
 
-        Timer.delay(function() {
-            // Apply properties (except special keys)
+        var startTime = haxe.Timer.stamp();
+        var timer = new haxe.Timer(16); // ~60fps ticks
+        timer.run = function() {
+            var elapsed = haxe.Timer.stamp() - startTime;
+            var progress = duration > 0 ? Math.min(elapsed / duration, 1.0) : 1.0;
+
+            // Interpolate numeric fields
             for (field in Reflect.fields(vars)) {
-                if (field == "onComplete" || field == "delay") continue;
-
-                Reflect.setProperty(target, field, Reflect.field(vars, field));
+                if (field == "onComplete" || field == "onUpdate" || field == "delay") continue;
+                var endVal:Dynamic = Reflect.field(vars, field);
+                if (Std.isOfType(endVal, Float) || Std.isOfType(endVal, Int)) {
+                    var startVal:Dynamic = Reflect.getProperty(target, field);
+                    if (startVal == null) startVal = 0;
+                    Reflect.setProperty(target, field, startVal + (endVal - startVal) * progress);
+                } else {
+                    Reflect.setProperty(target, field, endVal);
+                }
             }
 
-            // Call onComplete if present
-            var cb = Reflect.field(vars, "onComplete");
-            if (cb != null && Reflect.isFunction(cb)) {
-                cb();
+            if (onUpdate != null && Reflect.isFunction(onUpdate)) {
+                onUpdate();
             }
-        }, ms);
+
+            if (progress >= 1.0) {
+                timer.stop();
+                if (onComplete != null && Reflect.isFunction(onComplete)) {
+                    onComplete();
+                }
+            }
+        };
     }
 }
