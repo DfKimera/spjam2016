@@ -1,13 +1,14 @@
 package {
 
-	import engine.UIScene;
-	import org.flixel.FlxText;
+import engine.UIScene;
 
-	public class Settings extends UIScene {
+import org.flixel.FlxText;
 
-		public override function create():void {
-			add(new FlxText(20, 20, 200, "Settings (not implemented"));
-		}
+public class Settings extends UIScene {
 
+	public override function create():void {
+		add(new FlxText(20, 20, 200, "Settings (not implemented"));
 	}
+
+}
 }

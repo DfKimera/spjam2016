@@ -1,36 +1,37 @@
 package {
-	import engine.Scene;
 
-	public class StoryLog {
+import engine.Scene;
 
-		public static var timeOfDay:String;
-		public static var hasBook:Boolean;
+public class StoryLog {
 
-		public static var hasSymbol1:Boolean;
-		public static var hasSymbol2:Boolean;
-		public static var hasSymbol3:Boolean;
-		public static var hasSymbol4:Boolean;
-		public static var hasSymbol5:Boolean;
+	public static var timeOfDay:String;
+	public static var hasBook:Boolean;
 
-		public static function reset():void {
-			timeOfDay = "day";
-			hasBook = false;
+	public static var hasSymbol1:Boolean;
+	public static var hasSymbol2:Boolean;
+	public static var hasSymbol3:Boolean;
+	public static var hasSymbol4:Boolean;
+	public static var hasSymbol5:Boolean;
 
-			hasSymbol1 = false;
-			hasSymbol2 = false;
-			hasSymbol3 = false;
-			hasSymbol4 = false;
-			hasSymbol5 = false;
-		}
+	public static function reset():void {
+		timeOfDay = "day";
+		hasBook = false;
 
-		public static function hasAllSymbols():Boolean {
-			return hasSymbol1 && hasSymbol2 && hasSymbol3 && hasSymbol4 && hasSymbol5;
-		}
+		hasSymbol1 = false;
+		hasSymbol2 = false;
+		hasSymbol3 = false;
+		hasSymbol4 = false;
+		hasSymbol5 = false;
+	}
 
-		public static function checkIfAllSymbols(scene:Scene):void {
-			if(hasAllSymbols()) {
-				Game.playMusic("will_my_soul");
-			}
+	public static function hasAllSymbols():Boolean {
+		return hasSymbol1 && hasSymbol2 && hasSymbol3 && hasSymbol4 && hasSymbol5;
+	}
+
+	public static function checkIfAllSymbols(scene:Scene):void {
+		if (hasAllSymbols()) {
+			Game.playMusic("will_my_soul");
 		}
 	}
+}
 }

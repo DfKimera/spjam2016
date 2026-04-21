@@ -1,0 +1,8 @@
+{
+  "src": "src",
+  "hxout": "Source",
+  "swc": [
+    "playerglobal32_0.swc",
+    "lib/greensock.swc"
+  ]
+}

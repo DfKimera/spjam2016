@@ -1,16 +1,16 @@
 package props {
 
-	import engine.Prop;
+import engine.Prop;
 
-	public class Boulder extends Prop {
+public class Boulder extends Prop {
 
-		[Embed("../../assets/prop_boulder.png")]
-		public var SPRITE:Class;
+	[Embed("../../assets/prop_boulder.png")]
+	public var SPRITE:Class;
 
-		public function Boulder() {
-			super();
-			loadGraphic(SPRITE);
-		}
-
+	public function Boulder() {
+		super();
+		loadGraphic(SPRITE);
 	}
+
+}
 }

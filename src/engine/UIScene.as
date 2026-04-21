@@ -1,19 +1,21 @@
 package engine {
 
-	import org.flixel.FlxG;
+import org.flixel.FlxG;
 
-	public class UIScene extends Scene {
+public class UIScene extends Scene {
 
-		public override function update():void {
-			if(!isReady) { return; }
-			if(FlxG.keys.justPressed("ESCAPE")) {
-				Game.goToMainMenu();
-			}
+	public override function update():void {
+		if (!isReady) {
+			return;
 		}
-
-		protected override function hasInventoryEnabled():Boolean {
-			return false;
+		if (FlxG.keys.justPressed("ESCAPE")) {
+			Game.goToMainMenu();
 		}
-
 	}
+
+	protected override function hasInventoryEnabled():Boolean {
+		return false;
+	}
+
+}
 }

@@ -1,83 +1,85 @@
 package levels {
 
-	import characters.Clovis;
+import characters.Clovis;
 
-	import engine.Book;
+import engine.Book;
 
-	import engine.InteractiveArea;
-	import engine.Inventory;
-	import engine.Item;
-	import engine.Level;
-	import engine.Portal;
-	import engine.Prop;
+import engine.InteractiveArea;
+import engine.Inventory;
+import engine.Item;
+import engine.Level;
+import engine.Portal;
+import engine.Prop;
 
-	import items.BrokenSpyglass;
+import items.BrokenSpyglass;
 
-	import items.Lens;
+import items.Lens;
 
-	import items.Shovel;
-	import items.Spyglass;
+import items.Shovel;
+import items.Spyglass;
 
-	public class Alley extends Level {
+public class Alley extends Level {
 
-		public var BACKGROUND_SPRITE:Class = Assets.BG_ALLEY;
+	public var BACKGROUND_SPRITE:Class = Assets.BG_ALLEY;
 
-		public var hasSeenSymbol:Boolean = false;
+	public var hasSeenSymbol:Boolean = false;
 
-		public function Alley():void {
-			super();
+	public function Alley():void {
+		super();
+	}
+
+	public override function prepare():void {
+		setBackground(BACKGROUND_SPRITE);
+	}
+
+	public override function create():void {
+		super.create();
+
+		TrainStation.setExit(Alley);
+		Portal.placeOnScene(this, "enter_train_station", 270, 535, 530, 65, TrainStation);
+
+		if (!Inventory.hasItemOfType("items::Shovel")) {
+			Item.placeOnScene(this, new Shovel, 411, 406);
 		}
 
-		public override function prepare():void {
-			setBackground(BACKGROUND_SPRITE);
+		InteractiveArea.placeOnScene(this, "graffitti", 23, 321, 228, 198, onGraffittiInteract);
+	}
+
+	public function onGraffittiInteract(area:InteractiveArea):void {
+		if (hasSeenSymbol) {
+			showDialog(Clovis, "O magnífico símbolo de Hastur, escondido no meio desse graffitti imundo.");
+			return;
 		}
 
-		public override function create():void {
-			super.create();
+		showDialog(Clovis, "Seria fácil esconder um símbolo no meio de todos esse graffittis.");
+	}
 
-			TrainStation.setExit(Alley);
-			Portal.placeOnScene(this, "enter_train_station", 270, 535, 530, 65, TrainStation);
+	public override function onItemUse(prop:Prop, item:Item):void {
 
-			if(!Inventory.hasItemOfType("items::Shovel")) {
-				Item.placeOnScene(this, new Shovel, 411, 406);
-			}
-
-			InteractiveArea.placeOnScene(this, "graffitti", 23, 321, 228, 198, onGraffittiInteract);
+		if (!StoryLog.hasBook) {
+			return;
 		}
 
-		public function onGraffittiInteract(area:InteractiveArea):void {
-			if(hasSeenSymbol) {
-				showDialog(Clovis, "O magnífico símbolo de Hastur, escondido no meio desse graffitti imundo.");
-				return;
-			}
-
-			showDialog(Clovis, "Seria fácil esconder um símbolo no meio de todos esse graffittis.");
+		if (item is BrokenSpyglass) {
+			return showDialog(Clovis, "Nada de diferente... por que a luneta não tem uma lente...");
 		}
 
-		public override function onItemUse(prop:Prop, item:Item):void {
+		if (item is Lens) {
+			return showDialog(Clovis, "Sinto algo diferente, mas a imagem está embaçada demais... A lente precisa estar na distância exata.");
+		}
 
-			if(!StoryLog.hasBook) return;
+		if (prop.name == "graffitti" && item is Spyglass) {
 
-			if(item is BrokenSpyglass) {
-				return showDialog(Clovis, "Nada de diferente... por que a luneta não tem uma lente...");
-			}
+			showDialog(Clovis, "Bingo! O símbolo parece... vivo!");
 
-			if(item is Lens) {
-				return showDialog(Clovis, "Sinto algo diferente, mas a imagem está embaçada demais... A lente precisa estar na distância exata.");
-			}
+			item.consume();
+			hasSeenSymbol = true;
 
-			if(prop.name == "graffitti" && item is Spyglass) {
+			StoryLog.hasSymbol1 = true;
+			StoryLog.checkIfAllSymbols(this);
 
-				showDialog(Clovis, "Bingo! O símbolo parece... vivo!");
-
-				item.consume();
-				hasSeenSymbol = true;
-
-				StoryLog.hasSymbol1 = true;
-				StoryLog.checkIfAllSymbols(this);
-
-				Book.open();
-			}
+			Book.open();
 		}
 	}
+}
 }

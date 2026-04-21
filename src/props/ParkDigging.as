@@ -1,16 +1,16 @@
 package props {
 
-	import engine.Prop;
+import engine.Prop;
 
-	public class ParkDigging extends Prop {
+public class ParkDigging extends Prop {
 
-		[Embed("../../assets/props/park_digging.png")]
-		public var SPRITE:Class;
+	[Embed("../../assets/props/park_digging.png")]
+	public var SPRITE:Class;
 
-		public function ParkDigging() {
-			super();
-			loadGraphic(SPRITE);
-		}
-
+	public function ParkDigging() {
+		super();
+		loadGraphic(SPRITE);
 	}
+
+}
 }
