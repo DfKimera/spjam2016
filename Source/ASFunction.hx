@@ -1,0 +1,1 @@
+typedef ASFunction = haxe.Constraints.Function;

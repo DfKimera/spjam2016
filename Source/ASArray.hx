@@ -1,0 +1,1 @@
+typedef ASArray<T> = Array<T>;
