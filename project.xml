@@ -2,7 +2,7 @@
 <project>
 	
 	<meta title="WhiteWolf Game Engine Haxe Edition" package="com.a3studios.whitewolf" version="2.0.0" company="A3 Studios" />
-	<app main="Bootstrap" path="out" file="" />
+	<app main="Bootstrap" path="out" file="game" />
 	
 	<source path="src" />
 	
