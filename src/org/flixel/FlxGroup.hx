@@ -265,7 +265,7 @@ return Size;
 	 * @return	The removed object.
 	 */
 	public function remove(Object:FlxBasic, Splice:Bool = false):FlxBasic {
-		var index= members.indexOf(ASObject.typeReference());
+		var index= members.indexOf(Object);
 		if ((index < 0) || (index >= members.length)) {
 			return null;
 		}
@@ -275,7 +275,7 @@ return Size;
 		} else {
 			members[index] = null;
 		}
-		return ASObject.typeReference();
+		return Object;
 	}
 
 	/**

@@ -755,15 +755,17 @@ i++;
 		gfx.lineTo(halfWidth - helper, halfHeight - helper);
 		gfx.endFill();
 
-		var logo:Bitmap = Type.createInstance(ImgLogo, []);
-		logo.scaleX = Std.int(helper / 10);
-		if (logo.scaleX < 1) {
-			logo.scaleX = 1;
+		if (ImgLogo != null) {
+			var logo:Bitmap = Type.createInstance(ImgLogo, []);
+			logo.scaleX = Std.int(helper / 10);
+			if (logo.scaleX < 1) {
+				logo.scaleX = 1;
+			}
+			logo.scaleY = logo.scaleX;
+			logo.x -= logo.scaleX;
+			logo.alpha = 0.35;
+			_focus.addChild(logo);
 		}
-		logo.scaleY = logo.scaleX;
-		logo.x -= logo.scaleX;
-		logo.alpha = 0.35;
-		_focus.addChild(logo);
 
 		addChild(_focus);
 	}

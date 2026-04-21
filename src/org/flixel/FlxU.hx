@@ -329,7 +329,7 @@ import Globals.flash_utils_getQualifiedClassName as getQualifiedClassName;
 				Results[0] = 4 + (red - green) / range;
 			}
 			Results[0] *= 60;
-			if (Results[0] < 0) {
+			if ((Results[0] : Float) < 0) {
 				Results[0] += 360;
 			}
 		}

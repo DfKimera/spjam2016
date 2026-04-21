@@ -625,56 +625,56 @@ import org.flixel.system.FlxTilemapBuffer;
 				var index:UInt;
 				if (up) {
 					index = currentIndex - widthInTiles;
-					if (distances[index] == -1) {
+					if ((distances[index] : Int) == -1) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (right) {
 					index = currentIndex + 1;
-					if (distances[index] == -1) {
+					if ((distances[index] : Int) == -1) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (down) {
 					index = currentIndex + widthInTiles;
-					if (distances[index] == -1) {
+					if ((distances[index] : Int) == -1) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (left) {
 					index = currentIndex - 1;
-					if (distances[index] == -1) {
+					if ((distances[index] : Int) == -1) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (up && right) {
 					index = currentIndex - widthInTiles + 1;
-					if ((distances[index] == -1) && (distances[currentIndex - widthInTiles] >= -1) && (distances[currentIndex + 1] >= -1)) {
+					if (((distances[index] : Int) == -1) && ((distances[currentIndex - widthInTiles] : Int) >= -1) && ((distances[currentIndex + 1] : Int) >= -1)) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (right && down) {
 					index = currentIndex + widthInTiles + 1;
-					if ((distances[index] == -1) && (distances[currentIndex + widthInTiles] >= -1) && (distances[currentIndex + 1] >= -1)) {
+					if (((distances[index] : Int) == -1) && ((distances[currentIndex + widthInTiles] : Int) >= -1) && ((distances[currentIndex + 1] : Int) >= -1)) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (left && down) {
 					index = currentIndex + widthInTiles - 1;
-					if ((distances[index] == -1) && (distances[currentIndex + widthInTiles] >= -1) && (distances[currentIndex - 1] >= -1)) {
+					if (((distances[index] : Int) == -1) && ((distances[currentIndex + widthInTiles] : Int) >= -1) && ((distances[currentIndex - 1] : Int) >= -1)) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
 				}
 				if (up && left) {
 					index = currentIndex - widthInTiles - 1;
-					if ((distances[index] == -1) && (distances[currentIndex - widthInTiles] >= -1) && (distances[currentIndex - 1] >= -1)) {
+					if (((distances[index] : Int) == -1) && ((distances[currentIndex - widthInTiles] : Int) >= -1) && ((distances[currentIndex - 1] : Int) >= -1)) {
 						distances[index] = distance;
 						neighbors.push(index);
 					}
@@ -711,56 +711,56 @@ import org.flixel.system.FlxTilemapBuffer;
 		var i:UInt;
 		if (up) {
 			i = Start - widthInTiles;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (right) {
 			i = Start + 1;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (down) {
 			i = Start + widthInTiles;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (left) {
 			i = Start - 1;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (up && right) {
 			i = Start - widthInTiles + 1;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (right && down) {
 			i = Start + widthInTiles + 1;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (left && down) {
 			i = Start + widthInTiles - 1;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}
 		}
 		if (up && left) {
 			i = Start - widthInTiles - 1;
-			if ((Data[i] >= 0) && (Data[i] < current)) {
+			if (((Data[i] : Int) >= 0) && ((Data[i] : Int) < (current : Int))) {
 				walkPath(Data, i, Points);
 				return;
 			}

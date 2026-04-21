@@ -139,7 +139,7 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 		SFX.play("bell");
 		this.onCombine(item);
 		Std.downcast(FlxG.state , Scene).onItemCombine(this, item);
-		Inventory._redrawGrid();
+		Inventory.redrawGrid();
 	}
 
 	/**
@@ -147,7 +147,7 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 	 * Internal handler for item use.
 	 */
 	public function _onUse() {
-		Inventory._hide();
+		Inventory.hide();
 	}
 
 	// -------------------------------------------------------------------------------------------------------------

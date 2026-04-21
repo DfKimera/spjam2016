@@ -73,7 +73,7 @@ import org.flixel.*;
 		var hsv:ASAny = RGBtoHSV(color);
 
 		if (threshold > 359 || threshold < 0) {
-			throw cast("FlxColor Warning: Invalid threshold given to getAnalogousHarmony()", Error);
+			throw "FlxColor Warning: Invalid threshold given to getAnalogousHarmony()";
 		}
 
 		var warmer= FlxMath.wrapValue(hsv.hue, 359 - threshold, 359);
@@ -103,7 +103,7 @@ import org.flixel.*;
 		var hsv:ASAny = RGBtoHSV(color);
 
 		if (threshold >= 359 || threshold <= 0) {
-			throw cast("FlxColor Warning: Invalid threshold given to getSplitComplementHarmony()", Error);
+			throw "FlxColor Warning: Invalid threshold given to getSplitComplementHarmony()";
 		}
 
 		var opposite= FlxMath.wrapValue(hsv.hue, 180, 359);

@@ -38,8 +38,7 @@ import engine.visualnovel.EventChain;
 	}
 
 	public function updateEventChains() {
-		for (_tmp_ in eventChains.___keys()) {
-var i:String  = _tmp_;
+		for (i in Reflect.fields(eventChains)) {
 			eventChains[i].update();
 		}
 	}

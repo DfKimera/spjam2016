@@ -19,7 +19,7 @@ import org.flixel.FlxText;
 	public var background:FlxSprite;
 
 	public var optionIndex:Array<ASAny> = [];
-	public var options:Array<ASAny> = [];
+	public var options:ASAny = {};
 	public var _options:FlxGroup = new FlxGroup();
 
 	public var selectedOption:Int = -1;
@@ -50,18 +50,18 @@ import org.flixel.FlxText;
 
 
 	public function triggerOption(name:String) {
-		if (!(options : ASAny)[ASCompat.toInt(name)]) {
+		if (!options[name]) {
 			return;
 		}
-		trace("Choice (trigger): ", name, (options : ASAny)[ASCompat.toInt(name)]);
-		ASCompat.dynamicAs((options : ASAny)[ASCompat.toInt(name)] , Choice).trigger();
+		trace("Choice (trigger): ", name, options[name]);
+		ASCompat.dynamicAs(options[name] , Choice).trigger();
 	}
 
 	public function addOption(name:String, callback:ASFunction):Question {
 
 		var option= new Choice(name, callback, x + 135, y + baseY);
 
-		(options : ASAny)[ASCompat.toInt(name)] = option;
+		options[name] = option;
 		optionIndex.push(name);
 		_options.add(option);
 
@@ -72,14 +72,13 @@ import org.flixel.FlxText;
 	}
 
 	public function unselectOptions() {
-		for (_tmp_ in 0...options.length) {
-var i = Std.string(_tmp_);
-			ASCompat.dynamicAs((options : ASAny)[ASCompat.toInt(i)] , Choice).setOff();
+		for (_tmp_ in 0...optionIndex.length) {
+			ASCompat.dynamicAs(options[optionIndex[_tmp_]] , Choice).setOff();
 		}
 	}
 
 	public function selectOption(name:String) {
-		ASCompat.dynamicAs((options : ASAny)[ASCompat.toInt(name)] , Choice).setOn();
+		ASCompat.dynamicAs(options[name] , Choice).setOn();
 	}
 
 	public override function update() {

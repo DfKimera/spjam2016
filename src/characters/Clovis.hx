@@ -11,7 +11,7 @@ import engine.Character;
 		this.characterName = "Clóvis";
 		this.textColor = 0x00FFFF;
 		this.setPortraits({
-			'default': [PORTRAIT_DEFAULT, false]
+			'default': ([PORTRAIT_DEFAULT, (false : Dynamic)] : Array<Dynamic>)
 		});
 	}
 }

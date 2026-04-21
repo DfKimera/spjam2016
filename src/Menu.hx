@@ -14,7 +14,7 @@ import org.flixel.FlxState;
 
 	public var background:FlxSprite;
 	public var optionIndex:Array<ASAny> = [];
-	public var options:Array<ASAny> = [];
+	public var options:ASAny = {};
 	public var _options:FlxGroup = new FlxGroup();
 
 	public var selectedOption:Int = -1;
@@ -64,9 +64,8 @@ import org.flixel.FlxState;
 	}
 
 	public function unselectOptions() {
-		for (_tmp_ in 0...options.length) {
-var i = Std.string(_tmp_);
-			ASCompat.dynamicAs(options[ASCompat.toInt(i)] , MenuOption).setOff();
+		for (_tmp_ in 0...optionIndex.length) {
+			ASCompat.dynamicAs(options[optionIndex[_tmp_]] , MenuOption).setOff();
 		}
 	}
 

@@ -206,7 +206,7 @@ import org.flixel.plugin.photonstorm.baseTypes.MouseSpring;
 	 */
 	public function enableMouseClicks(onRelease:Bool, pixelPerfect:Bool = false, alphaThreshold:UInt = 255) {
 		if (FlxG.getPlugin(FlxMouseControl) == null) {
-			throw cast("FlxExtendedSprite.enableMouseClicks called but FlxMouseControl plugin not activated", Error);
+			throw "FlxExtendedSprite.enableMouseClicks called but FlxMouseControl plugin not activated";
 		}
 
 		clickable = true;
@@ -252,7 +252,7 @@ function  set_clicks(i:UInt):UInt{
 	 */
 	public function enableMouseDrag(lockCenter:Bool = false, pixelPerfect:Bool = false, alphaThreshold:UInt = 255, boundsRect:FlxRect = null, boundsSprite:FlxSprite = null) {
 		if (FlxG.getPlugin(FlxMouseControl) == null) {
-			throw cast("FlxExtendedSprite.enableMouseDrag called but FlxMouseControl plugin not activated", Error);
+			throw "FlxExtendedSprite.enableMouseDrag called but FlxMouseControl plugin not activated";
 		}
 
 		draggable = true;
@@ -305,7 +305,7 @@ function  set_clicks(i:UInt):UInt{
 	 */
 	public function enableMouseThrow(xFactor:Int, yFactor:Int) {
 		if (FlxG.getPlugin(FlxMouseControl) == null) {
-			throw cast("FlxExtendedSprite.enableMouseThrow called but FlxMouseControl plugin not activated", Error);
+			throw "FlxExtendedSprite.enableMouseThrow called but FlxMouseControl plugin not activated";
 		}
 
 		throwable = true;
@@ -362,7 +362,7 @@ function  set_clicks(i:UInt):UInt{
 	 */
 	public function enableMouseSpring(onPressed:Bool = true, retainVelocity:Bool = false, tension:Float = 0.1, friction:Float = 0.95, gravity:Float = 0):MouseSpring {
 		if (FlxG.getPlugin(FlxMouseControl) == null) {
-			throw cast("FlxExtendedSprite.enableMouseSpring called but FlxMouseControl plugin not activated", Error);
+			throw "FlxExtendedSprite.enableMouseSpring called but FlxMouseControl plugin not activated";
 		}
 
 		hasMouseSpring = true;
@@ -457,7 +457,7 @@ function  get_springY():Int {
 				if ((touching & FlxObject.WALL) != 0) {
 					drag.y = frictionY;
 
-					if ((wasTouching & FlxObject.WALL) == false) {
+					if ((wasTouching & FlxObject.WALL) == 0) {
 						if (velocity.x < toleranceX) {
 							//trace("(left) velocity.x", velocity.x, "stopped via tolerance break", toleranceX);
 							velocity.x = 0;
@@ -472,7 +472,7 @@ function  get_springY():Int {
 					//	Stop them sliding like on ice
 					drag.y = frictionY;
 
-					if ((wasTouching & FlxObject.WALL) == false) {
+					if ((wasTouching & FlxObject.WALL) == 0) {
 						if (velocity.x > -toleranceX) {
 							//trace("(right) velocity.x", velocity.x, "stopped via tolerance break", toleranceX);
 							velocity.x = 0;
@@ -492,7 +492,7 @@ function  get_springY():Int {
 				if ((touching & FlxObject.CEILING) != 0) {
 					drag.x = frictionX;
 
-					if ((wasTouching & FlxObject.CEILING) == false) {
+					if ((wasTouching & FlxObject.CEILING) == 0) {
 						if (velocity.y < toleranceY) {
 							//trace("(down) velocity.y", velocity.y, "stopped via tolerance break", toleranceY);
 							velocity.y = 0;
@@ -507,7 +507,7 @@ function  get_springY():Int {
 					//	Stop them sliding like on ice
 					drag.x = frictionX;
 
-					if ((wasTouching & FlxObject.FLOOR) == false) {
+					if ((wasTouching & FlxObject.FLOOR) == 0) {
 						if (velocity.y > -toleranceY) {
 							//trace("(down) velocity.y", velocity.y, "stopped via tolerance break", toleranceY);
 							velocity.y = 0;

@@ -30,7 +30,7 @@ import org.flixel.FlxG;
 
 		var spacing:UInt = 7;
 
-		_bounds = Type.createInstance(ImgBounds, []);
+		_bounds = ImgBounds != null ? Type.createInstance(ImgBounds, []) : new flash.display.Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		addChild(_bounds);
 
 		unpress();

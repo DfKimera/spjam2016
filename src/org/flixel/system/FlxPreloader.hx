@@ -174,11 +174,13 @@ import org.flixel.FlxG;
 		_width = Std.int(stage.stageWidth / _buffer.scaleX);
 		_height = Std.int(stage.stageHeight / _buffer.scaleY);
 		_buffer.addChild(new Bitmap(new BitmapData(_width, _height, false, 0x00345e)));
-		var bitmap:Bitmap = Type.createInstance(ImgLogoLight, []);
-		bitmap.smoothing = true;
-		bitmap.width = bitmap.height = _height;
-		bitmap.x = (_width - bitmap.width) / 2;
-		_buffer.addChild(bitmap);
+		var bitmap:Bitmap = ImgLogoLight != null ? Type.createInstance(ImgLogoLight, []) : new Bitmap(new BitmapData(1, 1, true, 0));
+		if (ImgLogoLight != null) {
+			bitmap.smoothing = true;
+			bitmap.width = bitmap.height = _height;
+			bitmap.x = (_width - bitmap.width) / 2;
+			_buffer.addChild(bitmap);
+		}
 		_bmpBar = new Bitmap(new BitmapData(1, 7, false, 0x5f6aff));
 		_bmpBar.x = 4;
 		_bmpBar.y = _height - 11;
@@ -192,23 +194,27 @@ import org.flixel.FlxG;
 		_text.y = _bmpBar.y - 11;
 		_text.width = 80;
 		_buffer.addChild(_text);
-		_logo = Type.createInstance(ImgLogo, []);
-		_logo.scaleX = _logo.scaleY = _height / 8;
-		_logo.x = (_width - _logo.width) / 2;
-		_logo.y = (_height - _logo.height) / 2;
-		_buffer.addChild(_logo);
-		_logoGlow = Type.createInstance(ImgLogo, []);
-		_logoGlow.smoothing = true;
-		_logoGlow.blendMode = "screen";
-		_logoGlow.scaleX = _logoGlow.scaleY = _height / 8;
-		_logoGlow.x = (_width - _logoGlow.width) / 2;
-		_logoGlow.y = (_height - _logoGlow.height) / 2;
-		_buffer.addChild(_logoGlow);
-		bitmap = Type.createInstance(ImgLogoCorners, []);
-		bitmap.smoothing = true;
-		bitmap.width = _width;
-		bitmap.height = _height;
-		_buffer.addChild(bitmap);
+		if (ImgLogo != null) {
+			_logo = Type.createInstance(ImgLogo, []);
+			_logo.scaleX = _logo.scaleY = _height / 8;
+			_logo.x = (_width - _logo.width) / 2;
+			_logo.y = (_height - _logo.height) / 2;
+			_buffer.addChild(_logo);
+			_logoGlow = Type.createInstance(ImgLogo, []);
+			_logoGlow.smoothing = true;
+			_logoGlow.blendMode = "screen";
+			_logoGlow.scaleX = _logoGlow.scaleY = _height / 8;
+			_logoGlow.x = (_width - _logoGlow.width) / 2;
+			_logoGlow.y = (_height - _logoGlow.height) / 2;
+			_buffer.addChild(_logoGlow);
+		}
+		if (ImgLogoCorners != null) {
+			bitmap = Type.createInstance(ImgLogoCorners, []);
+			bitmap.smoothing = true;
+			bitmap.width = _width;
+			bitmap.height = _height;
+			_buffer.addChild(bitmap);
+		}
 		bitmap = new Bitmap(new BitmapData(_width, _height, false, 0xffffff));
 		var i:UInt = 0;
 		var j:UInt = 0;

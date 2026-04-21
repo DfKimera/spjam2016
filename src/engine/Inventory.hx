@@ -43,7 +43,7 @@ class Inventory extends FlxGroup {
         button.mouseReleasedCallback = this.onButtonClick;
         scene.ui.add(button);
 
-        button.ID = Int.MAX_INT - 1;
+        button.ID = ASCompat.MAX_INT - 1;
 
         this.scene = scene;
 
@@ -59,12 +59,11 @@ class Inventory extends FlxGroup {
     }
 
     function generateGrid() {
-        for (_tmp_ in 0...Inventory.items.length) {
-            var itemType = Std.string(_tmp_);
-            if (!(Inventory.items : ASAny)[ASCompat.toInt(itemType)]) {
+        for (itemType in Reflect.fields(Inventory.items)) {
+            if (!Inventory.items[itemType]) {
                 continue;
             }
-            placeItemOnGrid((Inventory.items : ASAny)[ASCompat.toInt(itemType)]);
+            placeItemOnGrid(Inventory.items[itemType]);
         }
     }
 
@@ -137,14 +136,14 @@ class Inventory extends FlxGroup {
     // -------------------------------------------------------------------------------------------------------------
 
     static var _invGrid:Inventory;
-    static var items:Array<ASAny> = [];
+    static var items:ASAny = {};
 
     /**
 	 * Adds an item to the player's inventory.
 	 * @param item Item The item to be added.
 	 */
     public static function addToInventory(item:Item) {
-        (Inventory.items : ASAny)[ASCompat.toInt(getQualifiedClassName(item))] = item;
+        Inventory.items[getQualifiedClassName(item)] = item;
         _invGrid.placeItemOnGrid(item);
     }
 
@@ -153,7 +152,7 @@ class Inventory extends FlxGroup {
 	 * @param item Item The item to be removed.
 	 */
     public static function removeFromInventory(item:Item) {
-        (Inventory.items : ASAny)[ASCompat.toInt(getQualifiedClassName(item))] = null;
+        Inventory.items[getQualifiedClassName(item)] = null;
         _invGrid._redrawGrid();
     }
 
@@ -163,7 +162,7 @@ class Inventory extends FlxGroup {
 	 * @return Boolean
 	 */
     public static function hasItem(item:Item):Bool {
-        var i:Item = (Inventory.items : ASAny)[ASCompat.toInt(getQualifiedClassName(item))];
+        var i:Item = Inventory.items[getQualifiedClassName(item)];
         return (i != null);
     }
 
@@ -182,7 +181,7 @@ class Inventory extends FlxGroup {
 	 * @return
 	 */
     public static function getItemOfType(type:String):Item {
-        return (Inventory.items : ASAny)[ASCompat.toInt(type)];
+        return Inventory.items[type];
     }
 
     /**

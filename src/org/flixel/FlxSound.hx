@@ -299,7 +299,7 @@ import flash.net.URLRequest;
 	public function proximity(X:Float, Y:Float, Object:FlxObject, Radius:Float, Pan:Bool = true):FlxSound {
 		x = X;
 		y = Y;
-		_target = ASObject.typeReference();
+		_target = Object;
 		_radius = Radius;
 		_pan = Pan;
 		return this;

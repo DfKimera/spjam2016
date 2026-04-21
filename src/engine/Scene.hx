@@ -94,9 +94,9 @@ import org.flixel.plugin.photonstorm.FlxExtendedSprite;
 
 		if (FlxG.keys.justPressed("I")) {
 			if (!Inventory.isOpen()) {
-				Inventory._show();
+				Inventory.show();
 			} else {
-				Inventory._hide();
+				Inventory.hide();
 			}
 		}
 

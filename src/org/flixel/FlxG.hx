@@ -699,6 +699,9 @@ return Volume;
 	 * @return	The <code>BitmapData</code> we just created.
 	 */
 	static public function addBitmap(Graphic:Class<Dynamic>, Reverse:Bool = false, Unique:Bool = false, Key:String = null):BitmapData {
+		if (Graphic == null) {
+			return new BitmapData(1, 1, true, 0x00000000);
+		}
 		var needReverse= false;
 		if (Key == null) {
 			Key = ASCompat.toString(Graphic) + (Reverse ? "_REVERSE_" : "");
@@ -813,7 +816,7 @@ static function  get_state():FlxState {
 	static public function removeCamera(Camera:FlxCamera, Destroy:Bool = true) {
 		try {
 			FlxG._game.removeChild(Camera._flashSprite);
-		} catch (E:Error) {
+		} catch (E:Dynamic) {
 			FlxG.log("Error removing camera, not part of game.");
 		}
 		if (Destroy) {

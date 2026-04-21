@@ -16,4 +16,15 @@ abstract ASAny(Dynamic) from Dynamic to Dynamic {
         Reflect.setProperty(this, key, value);
         return value;
     }
+
+    @:arrayAccess
+    public inline function getInt(key:Int):Dynamic {
+        return Reflect.field(this, Std.string(key));
+    }
+
+    @:arrayAccess
+    public inline function setInt(key:Int, value:Dynamic):Dynamic {
+        Reflect.setProperty(this, Std.string(key), value);
+        return value;
+    }
 }

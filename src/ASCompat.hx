@@ -8,6 +8,7 @@ import Math;
 class ASCompat {
     public static inline var MAX_INT:Int = 0x7fffffff;
     public static inline var MAX_FLOAT:Float = 1.7976931348623157e308;
+    public static inline var MIN_FLOAT:Float = 5e-324;
 
     // AS3-style "as" (very loose)
     public static inline function dynamicAs<T>(v:Dynamic, c:Class<T>):Null<T> {
@@ -45,7 +46,13 @@ class ASCompat {
     public static inline function toFixed(v:Dynamic, digits:Int):String {
         var n = toNumber(v);
         if (Math.isNaN(n)) return "NaN";
-        return n.toFixed(digits);
+        return (untyped n).toFixed(digits);
+    }
+
+    public static function arraySetLength<T>(arr:Array<T>, len:Int):Int {
+        if (len < arr.length) arr.splice(len, arr.length - len);
+        else while (arr.length < len) arr.push(cast null);
+        return arr.length;
     }
 
     // Flash-style setTimeout (returns timer so you can cancel if needed)

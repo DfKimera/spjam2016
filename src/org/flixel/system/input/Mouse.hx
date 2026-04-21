@@ -132,6 +132,9 @@ function  get_visible():Bool {
 		if (Graphic == null) {
 			Graphic = ImgDefaultCursor;
 		}
+		if (Graphic == null) {
+			return;
+		}
 		_cursor = Type.createInstance(Graphic, []);
 		_cursor.x = XOffset;
 		_cursor.y = YOffset;

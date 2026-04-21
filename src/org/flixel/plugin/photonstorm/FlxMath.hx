@@ -266,12 +266,12 @@ import org.flixel.*;
 	 * @param excludes An Array of integers that will NOT be returned (default: null)
 	 * @return A pseudo-random value between min (or 0) and max (or getrandmax, inclusive)
 	 */
-	public static function rand(min:Float = Math.NaN, max:Float = Math.NaN, excludes:Array<ASAny> = null):Int {
-		if (Math.isNaN(min)) {
+	public static function rand(min:Null<Float> = null, max:Null<Float> = null, excludes:Array<ASAny> = null):Int {
+		if (min == null || Math.isNaN(min)) {
 			min = 0;
 		}
 
-		if (Math.isNaN(max)) {
+		if (max == null || Math.isNaN(max)) {
 			max = getrandmax;
 		}
 
@@ -281,7 +281,7 @@ import org.flixel.*;
 
 		if (excludes != null) {
 			//	Sort the exclusion array
-			ASCompat.ASArray.sortWithOptions(excludes, ASCompat.ASArray.NUMERIC);
+			ASCompat.sortWithOptions(excludes);
 
 			var result:Int;
 
@@ -316,12 +316,12 @@ import org.flixel.*;
 	 * @param max The highest value to return (default: getrandmax)
 	 * @return A pseudo random value between min (or 0) and max (or getrandmax, inclusive)
 	 */
-	public static function randFloat(min:Float = Math.NaN, max:Float = Math.NaN):Float {
-		if (Math.isNaN(min)) {
+	public static function randFloat(min:Null<Float> = null, max:Null<Float> = null):Float {
+		if (min == null || Math.isNaN(min)) {
 			min = 0;
 		}
 
-		if (Math.isNaN(max)) {
+		if (max == null || Math.isNaN(max)) {
 			max = getrandmax;
 		}
 

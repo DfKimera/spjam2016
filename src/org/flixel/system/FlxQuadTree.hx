@@ -539,7 +539,7 @@ import org.flixel.FlxRect;
 					(_objectHullY + _objectHullHeight > _checkObjectHullY) &&
 					(_objectHullY < _checkObjectHullY + _checkObjectHullHeight)) {
 				//Execute callback functions if they exist
-				if (ASCompat.thisOrDefault((_processingCallback == null) , _processingCallback(_object, checkObject))) {
+				if ((_processingCallback == null) || _processingCallback(_object, checkObject)) {
 					overlapProcessed = true;
 				}
 				if (overlapProcessed && (_notifyCallback != null)) {

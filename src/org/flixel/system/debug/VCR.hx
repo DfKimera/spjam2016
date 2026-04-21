@@ -85,41 +85,41 @@ import org.flixel.FlxU;
 
 		var spacing:UInt = 7;
 
-		_open = Type.createInstance(ImgOpen, []);
+		_open = ImgOpen != null ? Type.createInstance(ImgOpen, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		addChild(_open);
 
-		_recordOff = Type.createInstance(ImgRecordOff, []);
+		_recordOff = ImgRecordOff != null ? Type.createInstance(ImgRecordOff, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_recordOff.x = _open.x + _open.width + spacing;
 		addChild(_recordOff);
 
-		_recordOn = Type.createInstance(ImgRecordOn, []);
+		_recordOn = ImgRecordOn != null ? Type.createInstance(ImgRecordOn, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_recordOn.x = _recordOff.x;
 		_recordOn.visible = false;
 		addChild(_recordOn);
 
-		_stop = Type.createInstance(ImgStop, []);
+		_stop = ImgStop != null ? Type.createInstance(ImgStop, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_stop.x = _recordOff.x;
 		_stop.visible = false;
 		addChild(_stop);
 
-		_flixel = Type.createInstance(ImgFlixel, []);
+		_flixel = ImgFlixel != null ? Type.createInstance(ImgFlixel, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_flixel.x = _recordOff.x + _recordOff.width + spacing;
 		addChild(_flixel);
 
-		_restart = Type.createInstance(ImgRestart, []);
+		_restart = ImgRestart != null ? Type.createInstance(ImgRestart, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_restart.x = _flixel.x + _flixel.width + spacing;
 		addChild(_restart);
 
-		_pause = Type.createInstance(ImgPause, []);
+		_pause = ImgPause != null ? Type.createInstance(ImgPause, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_pause.x = _restart.x + _restart.width + spacing;
 		addChild(_pause);
 
-		_play = Type.createInstance(ImgPlay, []);
+		_play = ImgPlay != null ? Type.createInstance(ImgPlay, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_play.x = _pause.x;
 		_play.visible = false;
 		addChild(_play);
 
-		_step = Type.createInstance(ImgStep, []);
+		_step = ImgStep != null ? Type.createInstance(ImgStep, []) : new Bitmap(new flash.display.BitmapData(1, 1, true, 0));
 		_step.x = _pause.x + _pause.width + spacing;
 		addChild(_step);
 

@@ -138,7 +138,7 @@ function  get_size():Float {
 	}
 function  set_size(Size:Float):Float{
 		var format= dtfCopy();
-		format.size = Size;
+		format.size = Std.int(Size);
 		_textField.defaultTextFormat = format;
 		_textField.setTextFormat(format);
 		_regen = true;

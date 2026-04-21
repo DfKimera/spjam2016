@@ -68,8 +68,9 @@ class Utils {
 
     public static function reverseArray(input:Array<ASAny>):Array<ASAny> {
         var out:Array<ASAny> = [];
-        for (i in (0...input.length).reverse()) {
-            out.push(input[i]);
+        var i = input.length - 1;
+        while (i >= 0) {
+            out.push(input[i--]);
         }
         return out;
     }
@@ -85,13 +86,7 @@ class Utils {
     }
 
     public static function hasItemOfType(obj:ASAny, key:String):Bool {
-        for (_tmp_ in obj.___keys()) {
-            var i:String = _tmp_;
-            if (i == i) {
-                return true;
-            }
-        }
-        return false;
+        return Reflect.hasField(obj, key);
     }
 
     public static function resizeArray<T>(arr:Array<T>, newLength:Int, ?fill:T):Array<T> {

@@ -9,8 +9,8 @@ import org.flixel.FlxSprite;
 	public var characterName:String = "Unknown";
 	public var textColor:UInt = 0xFFFFFF;
 
-	var portraits:Array<ASAny> = [];
-	var portraitSprites:Array<ASAny> = [];
+	var portraits:ASAny = {};
+	var portraitSprites:ASAny = {};
 
 	public function new(){
 		super();
@@ -27,8 +27,7 @@ import org.flixel.FlxSprite;
 	 * {<expression_name>: [<bitmap_class>, <is_animated>]}
 	 */
 	public function setPortraits(portraitList:ASAny) {
-		for (_tmp_ in portraitList.___keys()) {
-var i:String  = _tmp_;
+		for (i in Reflect.fields(portraitList)) {
 			addPortrait(i, portraitList[i][0], ASCompat.toBool(portraitList[i][1]));
 		}
 	}
@@ -40,9 +39,9 @@ var i:String  = _tmp_;
 	 * @param isAnimated Boolean Is the portrait animated?
 	 */
 	public function addPortrait(expression:String, graphic:Class<Dynamic>, isAnimated:Bool = false) {
-		(portraits : ASAny)[ASCompat.toInt(expression)] = graphic;
-		(portraitSprites : ASAny)[ASCompat.toInt(expression)] = new FlxSprite(0, 0);
-		(portraitSprites : ASAny)[ASCompat.toInt(expression)].loadGraphic(graphic, isAnimated, false);
+		portraits[expression] = graphic;
+		portraitSprites[expression] = new FlxSprite(0, 0);
+		portraitSprites[expression].loadGraphic(graphic, isAnimated, false);
 	}
 
 	/**
@@ -51,7 +50,7 @@ var i:String  = _tmp_;
 	 * @return FlxSprite The portrait sprite.
 	 */
 	public function getPortrait(expression:String):FlxSprite {
-		return (portraitSprites : ASAny)[ASCompat.toInt(expression)];
+		return portraitSprites[expression];
 	}
 
 	public function playSound(soundName:String):FlxSound {
